@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ProductTest {
-<<<<<<< HEAD
+
     private Product product_1;
 
     @Before
@@ -68,7 +68,4 @@ public class ProductTest {
         assertEquals(0.75, product_1.getWeight(), 0);
 
     }
-=======
->>>>>>> db427abbc30eabfdc7572ce03970e580864c7225
-
 }
