@@ -9,14 +9,16 @@ public class Product {
     private Enum group;
     private List<Enum> tags;
     private double weight;
+    private Farm farm;
 
     public Product(){}
 
-    public Product(String productName, Enum group, List<Enum> tags, double weight) {
+    public Product(String productName, Enum group, List<Enum> tags, double weight, Farm farm) {
         this.productName = productName;
         this.group = group;
         this.tags = tags;
         this.weight = weight;
+        this.farm = farm;
     }
 
     //GETTERS & SETTERS
@@ -60,8 +62,15 @@ public class Product {
         this.weight = weight;
     }
 
+    public Farm getFarm() {
+        return farm;
+    }
 
-//OTHER METHODS
+    public void setFarm(Farm farm) {
+        this.farm = farm;
+    }
+
+    //OTHER METHODS
 
 
 
