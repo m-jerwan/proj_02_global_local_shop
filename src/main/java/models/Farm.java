@@ -7,14 +7,13 @@ public class Farm {
     private String farmerName;
     private String bio;
     private String address;
-    private FuelConversionFactor fuelConversionFactor;
+    private FuelConversionFactorType fuelConversionFactorType;
 
-    public Farm(String farmName, String farmerName, String bio, String address, FuelConversionFactor fuelConversionFactor) {
+    public Farm(String farmName, String farmerName, String address, FuelConversionFactorType fuelConversionFactorType) {
         this.farmName = farmName;
         this.farmerName = farmerName;
-        this.bio = bio;
         this.address = address;
-        this.fuelConversionFactor =fuelConversionFactor;
+        this.fuelConversionFactorType = fuelConversionFactorType;
     }
 
     public Farm() {
@@ -60,11 +59,11 @@ public class Farm {
         this.address = address;
     }
 
-    public FuelConversionFactor getFuelConversionFactor() {
-        return fuelConversionFactor;
+    public FuelConversionFactorType getFuelConversionFactorType() {
+        return fuelConversionFactorType;
     }
 
-    public void setFuelConversionFactor(FuelConversionFactor fuelConversionFactor) {
-        this.fuelConversionFactor = fuelConversionFactor;
+    public void setFuelConversionFactorType(FuelConversionFactorType fuelConversionFactorType) {
+        this.fuelConversionFactorType = fuelConversionFactorType;
     }
 }

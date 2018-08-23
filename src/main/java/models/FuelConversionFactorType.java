@@ -1,6 +1,6 @@
 package models;
 
-public enum FuelConversionFactor {
+public enum FuelConversionFactorType {
 
     PETROL ("petrol", 2.45),
     DIESEL ("diesel", 2.45),
@@ -11,7 +11,7 @@ public enum FuelConversionFactor {
     private String petrolType;
     private double fuelConversionFactor;
 
-    FuelConversionFactor(String petrolType, double fuelConversionFactor) {
+    FuelConversionFactorType(String petrolType, double fuelConversionFactor) {
         this.petrolType = petrolType;
         this.fuelConversionFactor = fuelConversionFactor;
     }
