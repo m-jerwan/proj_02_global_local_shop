@@ -2,9 +2,11 @@ package models;
 
 public enum FuelConversionFactor {
 
-    PETROL ("PETROL", 2.45),
-    ;
-
+    PETROL ("petrol", 2.45),
+    DIESEL ("diesel", 2.45),
+    BIODIESEL ("biodiesel", 2.45),
+    HYBRID ("hybrid", 2.45),
+    ELECTRIC("electric", 2.45);
 
     private String petrolType;
     private double fuelConversionFactor;
@@ -19,15 +21,8 @@ public enum FuelConversionFactor {
         return petrolType;
     }
 
-    public void setPetrolType(String petrolType) {
-        this.petrolType = petrolType;
-    }
-
     public double getFuelConversionFactor() {
         return fuelConversionFactor;
     }
 
-    public void setFuelConversionFactor(double fuelConversionFactor) {
-        this.fuelConversionFactor = fuelConversionFactor;
-    }
 }
