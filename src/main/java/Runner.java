@@ -14,5 +14,8 @@ public class Runner {
         Product product2 = new Product("beans", GroupType.GRAINS, TagType.ORGANIC,1, farm1);
         DBHelper.save(product2);
 
+        Customer customer = new Customer ("Pat", "Edinburgh");
+
+
     }
 }

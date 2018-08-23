@@ -10,7 +10,7 @@ public class Product {
     private int id;
     private String productName;
     private GroupType groupType;
-//    private GroupType group;
+    private GroupType group;
     private TagType tag;
     private double weight;
     private Farm farm;
@@ -26,7 +26,7 @@ public class Product {
         this.farm = farm;
     }
 
-    //GETTERS & SETTERS
+//GETTERS & SETTERS
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -85,7 +85,7 @@ public class Product {
         this.farm = farm;
     }
 
-    //OTHER METHODS
+//OTHER METHODS
 
 
 
