@@ -1,9 +1,14 @@
 package models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+
+@Entity
+@Table(name = "customers")
 
 public class Customer {
 
@@ -24,6 +29,9 @@ public class Customer {
 //GETTERS & SETTERS
 
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -32,6 +40,7 @@ public class Customer {
         this.id = id;
     }
 
+    @Column(name = "customer_name")
     public String getCustomerName() {
         return customerName;
     }
@@ -40,6 +49,7 @@ public class Customer {
         this.customerName = customerName;
     }
 
+    @Column(name = "customer_address")
     public String getCustomerAddress() {
         return customerAddress;
     }
@@ -48,6 +58,7 @@ public class Customer {
         this.customerAddress = customerAddress;
     }
 
+//    @MapKeyColumn(name = "environmental_info")
     public Map<String, String> getEnvironmetnInfo() {
         return environmetnInfo;
     }
@@ -56,6 +67,8 @@ public class Customer {
         this.environmetnInfo = environmetnInfo;
     }
 
+
+    @OneToMany(mappedBy = "customer")
     public List<Product> getBasket() {
         return basket;
     }
@@ -63,6 +76,9 @@ public class Customer {
     public void setBasket(List<Product> basket) {
         this.basket = basket;
     }
+
+
+
 
     //OTHER METHODS
     public void addToBasket(Product product){

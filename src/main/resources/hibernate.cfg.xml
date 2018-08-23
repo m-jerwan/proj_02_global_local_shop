@@ -13,5 +13,7 @@
         <property name="show_sql">true</property>
         <mapping class = "models.Product"/>
         <mapping class = "models.Farm"/>
+        <mapping class = "models.Customer"/>
+
     </session-factory>
 </hibernate-configuration>
