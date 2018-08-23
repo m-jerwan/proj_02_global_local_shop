@@ -10,8 +10,5 @@
         <module name="proj_02_global_local_shop" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="globalLocal" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>

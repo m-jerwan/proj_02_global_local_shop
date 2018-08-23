@@ -17,5 +17,8 @@ public class Runner {
         Customer customer = new Customer ("Pat", "Edinburgh");
         DBHelper.save(customer);
 
+        Shop shop = new Shop("new shop");
+        DBHelper.save(shop);
+
     }
 }
