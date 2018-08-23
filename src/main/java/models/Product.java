@@ -9,7 +9,7 @@ public class Product {
 
     private int id;
     private String productName;
-    private GroupTypeNew groupTypeNew;
+    private GroupType groupType;
 //    private GroupType group;
     private TagType tag;
     private double weight;
@@ -18,9 +18,9 @@ public class Product {
 
     public Product(){}
 
-    public Product(String productName, GroupTypeNew groupTypeNew, TagType tag, double weight, Farm farm) {
+    public Product(String productName, GroupType groupType, TagType tag, double weight, Farm farm) {
         this.productName = productName;
-        this.groupTypeNew = groupTypeNew;
+        this.groupType = groupType;
         this.tag = tag;
         this.weight = weight;
         this.farm = farm;
@@ -49,22 +49,13 @@ public class Product {
     }
 
     @Enumerated(value = EnumType.STRING)
-    public GroupTypeNew getGroupTypeNew() {
-        return groupTypeNew;
+    public GroupType getGroupType() {
+        return groupType;
     }
 
-    public void setGroupTypeNew(GroupTypeNew groupTypeNew) {
-        this.groupTypeNew = groupTypeNew;
+    public void setGroupType(GroupType groupType) {
+        this.groupType = groupType;
     }
-
-    //    @Enumerated(value = EnumType.STRING)
-//    public GroupType getGroup() {
-//        return this.group;
-//    }
-//
-//    public void setGroup(GroupType group) {
-//        this.group = group;
-//    }
 
     @Enumerated(value = EnumType.STRING)
     public TagType getTag() {

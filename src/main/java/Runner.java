@@ -8,10 +8,10 @@ public class Runner {
         farm1.setBio(bio);
         DBHelper.save(farm1);
 
-        Product product1 = new Product("potatoes", GroupTypeNew.DAIRY, TagType.ORGANIC,1, farm1);
+        Product product1 = new Product("potatoes", GroupType.DAIRY, TagType.ORGANIC,1, farm1);
         DBHelper.save(product1);
 
-        Product product2 = new Product("beans", GroupTypeNew.GRAINS, TagType.ORGANIC,1, farm1);
+        Product product2 = new Product("beans", GroupType.GRAINS, TagType.ORGANIC,1, farm1);
         DBHelper.save(product2);
 
     }

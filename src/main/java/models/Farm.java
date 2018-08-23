@@ -1,7 +1,12 @@
 package models;
 
+
+
+
+
 import javax.persistence.*;
 import java.util.List;
+
 
 @Entity
 @Table(name = "farms")
