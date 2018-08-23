@@ -1,5 +1,11 @@
 package models;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "farms")
+
 public class Farm {
 
     private int id;
@@ -8,6 +14,7 @@ public class Farm {
     private String bio;
     private String address;
     private FuelConversionFactorType fuelConversionFactorType;
+    private List<Product> products;
 
     public Farm(String farmName, String farmerName, String address, FuelConversionFactorType fuelConversionFactorType) {
         this.farmName = farmName;
@@ -19,6 +26,9 @@ public class Farm {
     public Farm() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -27,6 +37,7 @@ public class Farm {
         this.id = id;
     }
 
+    @Column(name = "farm_name")
     public String getFarmName() {
         return farmName;
     }
@@ -35,6 +46,7 @@ public class Farm {
         this.farmName = farmName;
     }
 
+    @Column(name = "framer_name")
     public String getFarmerName() {
         return farmerName;
     }
@@ -43,6 +55,7 @@ public class Farm {
         this.farmerName = farmerName;
     }
 
+    @Column(name = "bio")
     public String getBio() {
         return bio;
     }
@@ -51,6 +64,7 @@ public class Farm {
         this.bio = bio;
     }
 
+    @Column(name = "address")
     public String getAddress() {
         return address;
     }
@@ -59,11 +73,21 @@ public class Farm {
         this.address = address;
     }
 
+    @Enumerated(value = EnumType.STRING)
     public FuelConversionFactorType getFuelConversionFactorType() {
         return fuelConversionFactorType;
     }
 
     public void setFuelConversionFactorType(FuelConversionFactorType fuelConversionFactorType) {
         this.fuelConversionFactorType = fuelConversionFactorType;
+    }
+
+    @OneToMany(mappedBy = "farm")
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

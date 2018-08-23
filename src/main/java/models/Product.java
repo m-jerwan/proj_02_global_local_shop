@@ -1,27 +1,36 @@
 package models;
 
-import java.util.List;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "products")
 
 public class Product {
 
     private int id;
     private String productName;
-    private Enum group;
-    private List<Enum> tags;
+    private GroupTypeNew groupTypeNew;
+//    private GroupType group;
+    private TagType tag;
     private double weight;
     private Farm farm;
 
+
     public Product(){}
 
-    public Product(String productName, Enum group, List<Enum> tags, double weight, Farm farm) {
+    public Product(String productName, GroupTypeNew groupTypeNew, TagType tag, double weight, Farm farm) {
         this.productName = productName;
-        this.group = group;
-        this.tags = tags;
+        this.groupTypeNew = groupTypeNew;
+        this.tag = tag;
         this.weight = weight;
         this.farm = farm;
     }
 
     //GETTERS & SETTERS
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -30,6 +39,7 @@ public class Product {
         this.id = id;
     }
 
+    @Column(name = "product_name")
     public String getProductName() {
         return productName;
     }
@@ -38,22 +48,34 @@ public class Product {
         this.productName = productName;
     }
 
-    public Enum getGroup() {
-        return group;
+    @Enumerated(value = EnumType.STRING)
+    public GroupTypeNew getGroupTypeNew() {
+        return groupTypeNew;
     }
 
-    public void setGroup(Enum group) {
-        this.group = group;
+    public void setGroupTypeNew(GroupTypeNew groupTypeNew) {
+        this.groupTypeNew = groupTypeNew;
     }
 
-    public List<Enum> getTags() {
-        return tags;
+    //    @Enumerated(value = EnumType.STRING)
+//    public GroupType getGroup() {
+//        return this.group;
+//    }
+//
+//    public void setGroup(GroupType group) {
+//        this.group = group;
+//    }
+
+    @Enumerated(value = EnumType.STRING)
+    public TagType getTag() {
+        return tag;
     }
 
-    public void setTags(List<Enum> tags) {
-        this.tags = tags;
+    public void setTag(TagType tag) {
+        this.tag = tag;
     }
 
+    @Column(name = "weight")
     public double getWeight() {
         return weight;
     }
@@ -62,6 +84,8 @@ public class Product {
         this.weight = weight;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "farm_id", nullable = false)
     public Farm getFarm() {
         return farm;
     }

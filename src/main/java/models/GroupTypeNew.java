@@ -1,6 +1,7 @@
 package models;
 
-public enum FoodGroupType {
+public enum GroupTypeNew {
+
     PULSES("pulses/beans", 1),
     DAIRY("dairy", 1),
     FRUITS("fruits/berries", 1),
@@ -16,21 +17,19 @@ public enum FoodGroupType {
     TUBERS("tubers", 1),
     VEGETEABLES("vegeteables", 1);
 
-    private String description;
+    private String foodType;
     private double foodConversionFactor;
 
-
-    FoodGroupType(String description, double foodConversionFactor) {
-        this.description = description;
+    GroupTypeNew(String foodType, double foodConversionFactor) {
+        this.foodType = foodType;
         this.foodConversionFactor = foodConversionFactor;
     }
 
-    public String getDescription() {
-        return description;
+    public String getFoodType() {
+        return foodType;
     }
 
     public double getFoodConversionFactor() {
         return foodConversionFactor;
     }
-    
 }
