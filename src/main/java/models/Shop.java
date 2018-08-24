@@ -2,6 +2,7 @@ package models;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,7 +16,10 @@ public class Shop {
     private List<Customer> customers;
 
     public Shop(String shopName) {
+
         this.shopName = shopName;
+        this.shopProducts = new ArrayList<Product>();
+        this.customers = new ArrayList<Customer>();
     }
 
     public Shop() {
@@ -57,5 +61,13 @@ public class Shop {
 
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
+    }
+
+    public void addCustomers(Customer customer){
+        this.customers.add(customer);
+    }
+
+    public void addProducts(Product product){
+        this.shopProducts.add(product);
     }
 }

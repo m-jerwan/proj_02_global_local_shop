@@ -10,7 +10,6 @@ public class Product {
     private int id;
     private String productName;
     private GroupType groupType;
-    private GroupType group;
     private TagType tag;
     private double weight;
     private Farm farm;
