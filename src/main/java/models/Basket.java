@@ -50,4 +50,12 @@ public class Basket {
     //    public void addProductToBasket(Product product){
 //        this.productsInBasket.add(product);
 //    }
+
+    public void addToBasket(Product product){
+        this.productsInBasket.add(product);
+    }
+
+    public void removeFromBasket(Product product){
+        this.productsInBasket.remove(product);
+    }
 }

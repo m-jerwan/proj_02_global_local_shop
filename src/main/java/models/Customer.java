@@ -20,7 +20,8 @@ public class Customer {
     private Shop shop;
 
 
-
+    public Customer() {
+    }
 
     public Customer(String customerName, String customerAddress, Shop shop) {
         this.customerName = customerName;
@@ -64,11 +65,11 @@ public class Customer {
 
 
     @OneToMany(mappedBy = "customer")
-    public List<Basket> getBasket() {
+    public List<Basket> getBaskets() {
         return baskets;
     }
 
-    public void setBasket(List<Product> basket) {
+    public void setBaskets(List<Basket> baskets) {
         this.baskets = baskets;
     }
 
@@ -82,14 +83,16 @@ public class Customer {
         this.shop = shop;
     }
 
+
+
     //OTHER METHODS
-//    public void addToBasket(Product product){
-//        this.basket.add(product);
-//    }
-//
-//    public void removeFromBasket(Product product){
-//        this.basket.remove(product);
-//    }
+    public void addBasket(Basket basket){
+        this.baskets.add(basket);
+    }
+
+    public void removeBasket(Basket basket){
+        this.baskets.remove(basket);
+    }
 //
 //    public void addEnvironmentalInfo(String key, String value){
 //        this.environmetnInfo.put(key, value);

@@ -1,3 +1,4 @@
+import db.DBCustomer;
 import db.DBHelper;
 import db.DBShop;
 import models.*;
@@ -17,9 +18,19 @@ public class Runner {
 
         Customer customer = new Customer ("Pat", "Edinburgh", shop);
         DBHelper.save(customer);
+        Customer customer2 = new Customer ("Marcin", "Edinburgh", shop);
+        DBHelper.save(customer2);
 
-        Basket basket = new Basket(customer);
-        DBHelper.save(basket);
+        Basket basket_1 = new Basket(customer);
+        Basket basket2 = new Basket(customer2);
+        DBHelper.save(basket_1);
+        DBHelper.save(basket2);
+        List<Basket> giveMeBaskets = DBHelper.getAll(Basket.class);
+
+        customer.addBasket(basket_1);
+        DBHelper.update(customer);
+
+
 
         Product product1 = new Product("potatoes", GroupType.DAIRY, TagType.ORGANIC,1, farm1, shop);
         DBHelper.save(product1);
@@ -35,6 +46,14 @@ public class Runner {
 
         List<Product> productList = DBShop.allProductsForShop();
 
+        List<Basket> baskets = DBHelper.getAll(Basket.class);
 
+        List<Customer> basketsTest = DBHelper.getAll(Customer.class);
+
+        List<Farm> farms = DBHelper.getAll(Farm.class);
+
+        List<Shop>  shops = DBHelper.getAll(Shop.class);
+
+        List<Basket> basketsOfCustomer = DBCustomer.allBaskets(customer);
     }
 }
