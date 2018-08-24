@@ -16,6 +16,7 @@ public class MainController {
 
 
         FarmController farmController = new FarmController();
+        CustomersController customersController = new CustomersController();
 
 
         get("/", (req, res) -> {
