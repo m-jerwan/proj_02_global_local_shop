@@ -22,8 +22,10 @@ public class ProductTest {
 
         ArrayList<Enum> tags = new ArrayList<Enum>();
         tags.add(ORGANIC);
+        Shop shop = new Shop("new shop");
 
-        product_1 = new Product("potatoes", TUBERS, ORGANIC,0.5, farm1 );
+
+        product_1 = new Product("potatoes", TUBERS, ORGANIC,0.5, farm1, shop );
     }
 
     @Test

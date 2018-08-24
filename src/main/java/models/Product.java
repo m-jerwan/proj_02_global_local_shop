@@ -14,16 +14,20 @@ public class Product {
     private TagType tag;
     private double weight;
     private Farm farm;
+    private Shop shop;
+    private Basket basket;
 
 
     public Product(){}
 
-    public Product(String productName, GroupType groupType, TagType tag, double weight, Farm farm) {
+    public Product(String productName, GroupType groupType, TagType tag, double weight, Farm farm, Shop shop) {
         this.productName = productName;
         this.groupType = groupType;
         this.tag = tag;
         this.weight = weight;
         this.farm = farm;
+        this.shop = shop;
+        this.basket = null; // PRODUCTS START WITH NULL BASKET
     }
 
 //GETTERS & SETTERS
@@ -85,7 +89,28 @@ public class Product {
         this.farm = farm;
     }
 
-//OTHER METHODS
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shop_id", nullable = false)
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "basket_id", nullable = true)
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
+    }
+
+
+    //OTHER METHODS
 
 
 

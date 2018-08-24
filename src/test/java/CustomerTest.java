@@ -10,7 +10,9 @@ public class CustomerTest {
 
     @Before
     public void before(){
-        customer_1 = new Customer("Ricardo", "Edinburgh");
+        Shop shop = new Shop("new shop");
+
+        customer_1 = new Customer("Ricardo", "Edinburgh", shop);
     }
     @Test
     public void hasName(){

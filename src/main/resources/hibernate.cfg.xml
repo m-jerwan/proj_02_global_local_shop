@@ -15,6 +15,7 @@
         <mapping class = "models.Farm"/>
         <mapping class = "models.Customer"/>
         <mapping class = "models.Shop"/>
+        <mapping class = "models.Basket"/>
 
     </session-factory>
 </hibernate-configuration>

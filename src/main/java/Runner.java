@@ -8,17 +8,17 @@ public class Runner {
         farm1.setBio(bio);
         DBHelper.save(farm1);
 
-        Product product1 = new Product("potatoes", GroupType.DAIRY, TagType.ORGANIC,1, farm1);
-        DBHelper.save(product1);
-
-        Product product2 = new Product("beans", GroupType.GRAINS, TagType.ORGANIC,1, farm1);
-        DBHelper.save(product2);
-
-        Customer customer = new Customer ("Pat", "Edinburgh");
-        DBHelper.save(customer);
-
         Shop shop = new Shop("new shop");
         DBHelper.save(shop);
+
+        Customer customer = new Customer ("Pat", "Edinburgh", shop);
+        DBHelper.save(customer);
+
+        Basket basket = new Basket(customer);
+        DBHelper.save(basket);
+
+        Product product1 = new Product("potatoes", GroupType.DAIRY, TagType.ORGANIC,1, farm1, shop);
+        DBHelper.save(product1);
 
     }
 }
