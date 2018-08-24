@@ -16,8 +16,8 @@ public class Seeds {
         String bio2 = "super cool bio";
         String bio3 = "It is full of stars";
         farm_1.setBio(bio1);
-        farm_2.setBio(bio1);
-        farm_3.setBio(bio1);
+        farm_2.setBio(bio2);
+        farm_3.setBio(bio3);
         DBHelper.save(farm_1);
         DBHelper.save(farm_2);
         DBHelper.save(farm_3);
