@@ -18,7 +18,7 @@ public class ProductTest {
 
     @Before
     public void before(){
-        farm1 = new Farm("Animal Farm", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
+        farm1 = new Farm("Animal Farms", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
 
         ArrayList<Enum> tags = new ArrayList<Enum>();
         tags.add(ORGANIC);
@@ -79,7 +79,7 @@ public class ProductTest {
 
     @Test
     public void gotFarm(){
-        assertEquals("Animal Farm", product_1.getFarm().getFarmName());
+        assertEquals("Animal Farms", product_1.getFarm().getFarmName());
     }
 
     @Test

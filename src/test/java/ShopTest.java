@@ -18,7 +18,7 @@ public class ShopTest {
 
     @Before
     public void before() {
-        farm1 = new Farm("Animal Farm", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
+        farm1 = new Farm("Animal Farms", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
         ArrayList<Enum> tags = new ArrayList<Enum>();
         tags.add(ORGANIC);
 

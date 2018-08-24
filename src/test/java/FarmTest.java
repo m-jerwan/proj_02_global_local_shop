@@ -11,12 +11,12 @@ public class FarmTest {
 
     @Before
     public void before(){
-        farm1 = new Farm("Animal Farm", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
+        farm1 = new Farm("Animal Farms", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
     }
 
     @Test
     public void farmHasName(){
-        assertEquals("Animal Farm", farm1.getFarmName());
+        assertEquals("Animal Farms", farm1.getFarmName());
     }
 
     @Test

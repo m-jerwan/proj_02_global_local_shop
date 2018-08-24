@@ -13,6 +13,10 @@ public class MainController {
     public static void main(String[] args) {
 //        Seeds.seedData();
 
+
+        FarmController farmController = new FarmController();
+
+
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/index.vtl");

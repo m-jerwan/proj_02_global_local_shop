@@ -44,7 +44,7 @@ public class CustomerTest {
 //
 //    @Test
 //    public void canAddToBasket(){
-//        Farm farm1 = new Farm("Animal Farm", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
+//        Farms farm1 = new Farms("Animal Farms", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
 //        Product product1 = new Product("potatoes", GroupType.DAIRY, TagType.ORGANIC,1, farm1);
 //        customer_1.addToBasket(product1);
 //        assertEquals("potatoes", customer_1.getBasket().get(0).getProductName());
