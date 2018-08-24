@@ -16,14 +16,18 @@ public class Customer {
     private String customerName;
     private String customerAddress;
 //    private Map<String, String> environmetnInfo;
-//    private List<Product> basket;
+    private List<Basket> baskets;
+    private Shop shop;
 
 
-    public Customer(String customerName, String customerAddress) {
+
+
+    public Customer(String customerName, String customerAddress, Shop shop) {
         this.customerName = customerName;
         this.customerAddress = customerAddress;
 //        this.environmetnInfo = new HashMap<String, String>();
-//        this.basket = new ArrayList<Product>();
+        this.baskets = new ArrayList<Basket>();
+        this.shop = shop;
     }
 
 //GETTERS & SETTERS
@@ -57,27 +61,26 @@ public class Customer {
     public void setCustomerAddress(String customerAddress) {
         this.customerAddress = customerAddress;
     }
-//
-//    @MapKeyColumn(name = "environmental_info")
-//    public Map<String, String> getEnvironmetnInfo() {
-//        return environmetnInfo;
-//    }
-
-//    public void setEnvironmetnInfo(Map<String, String> environmetnInfo) {
-//        this.environmetnInfo = environmetnInfo;
-//    }
-
-//
-//    public List<Product> getBasket() {
-//        return basket;
-//    }
-//
-//    public void setBasket(List<Product> basket) {
-//        this.basket = basket;
-//    }
 
 
+    @OneToMany(mappedBy = "customer")
+    public List<Basket> getBasket() {
+        return baskets;
+    }
 
+    public void setBasket(List<Product> basket) {
+        this.baskets = baskets;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "shop_id", nullable = false)
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
 
     //OTHER METHODS
 //    public void addToBasket(Product product){
