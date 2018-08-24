@@ -43,13 +43,8 @@ public class FarmController {
 
 // & create
 
-        //THIS IS NOT USED YET
         post("/farms", (req, res) -> {
-
             //todo: get all info from queryParams
-
-            Farm farm = new Farm(); //todo: not def constructor
-            DBHelper.save(farm);
             res.redirect("/farms");
             return null;
         });

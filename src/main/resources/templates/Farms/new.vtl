@@ -4,22 +4,25 @@
 <form action="/customers" method="post">
 
 
-    <label for="customerName"> Name:</label>
-    <input class="inputbox" type="text" name="customerName" required="true" id="customerName">
+    <label for="farm_name"> Farm name:</label>
+    <input class="inputbox" type="text" name="farm_name" required="true" id="farm_name">
 
-    <label for="customerAddress"> Address:</label>
-    <input class="inputbox" type="text" name="customerAddress" required="true" id="customerAddress">
+    <label for="farmer_name">Farmer name:</label>
+    <input class="inputbox" type="text" name="farmer_name" required="true" id="farmer_name">
 
+    <label for="bio"> Short bio:</label>
+    <input class="inputbox" type="text" name="bio" required="true" id="bio">
 
-    <label for="shop"> Shop </label>
-    <select id="shop" name="shop" hidden>
-        #foreach  ($shop in $shops)
-        <option value="$shop.getId()">$shop.getShopName()</option>
-        #end
+    <label for="address">Farm address:</label>
+    <input class="inputbox" type="text" name="address" required="true" id="address">
+
+    <label for="fuel"> Fuel </label>
+    <select name="fuel" id="fuel">
+        for ($XX in $XX)
+            <option value="">XXXX</option>
+        end
     </select>
 
-    <input type="submit" value="Save" class="button">
-
-
+    <input type="submit" value="Register Farm" class="button">
 </form>
 
