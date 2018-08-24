@@ -37,8 +37,6 @@ public class FarmController {
 //new
         get("/farms/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Farm> farms = DBHelper.getAll(Farm.class);
-            model.put("farms", farms);
             model.put("template", "templates/farms/new.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
