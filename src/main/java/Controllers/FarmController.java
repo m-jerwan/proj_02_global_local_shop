@@ -59,6 +59,14 @@ public class FarmController {
             model.put("template", "templates/farms/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+//edit
+        get("/farms/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            Farm farm = DBHelper.find(Integer.parseInt(req.params(":id")), Farm.class);
+            model.put("farm", farm);
+            model.put("template", "templates/farms/edit.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 
 
 
