@@ -8,17 +8,16 @@ public enum FuelConversionFactorType {
     HYBRID ("hybrid", 2.45),
     ELECTRIC("electric", 2.45);
 
-    private String petrolType;
+    private String description;
     private double fuelConversionFactor;
 
-    FuelConversionFactorType(String petrolType, double fuelConversionFactor) {
-        this.petrolType = petrolType;
+    FuelConversionFactorType(String description, double fuelConversionFactor) {
+        this.description = description;
         this.fuelConversionFactor = fuelConversionFactor;
     }
 
-
-    public String getPetrolType() {
-        return petrolType;
+    public String getDescription() {
+        return description;
     }
 
     public double getFuelConversionFactor() {

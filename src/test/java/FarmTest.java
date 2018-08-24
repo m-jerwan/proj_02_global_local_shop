@@ -31,7 +31,7 @@ public class FarmTest {
 
     @Test
     public void hasPetrolType(){
-        assertEquals("electric", FuelConversionFactorType.ELECTRIC.getPetrolType());
+        assertEquals("electric", FuelConversionFactorType.ELECTRIC.getDescription());
     }
 
     @Test

@@ -1,4 +1,5 @@
 import db.DBCustomer;
+import db.DBFarm;
 import db.DBHelper;
 import db.DBShop;
 import models.*;
@@ -8,52 +9,65 @@ import java.util.List;
 
 public class Runner {
     public static void main(String[] args) {
-        Farm farm1 = new Farm("Animal Farms", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
-        String bio = "cool bio";
-        farm1.setBio(bio);
-        DBHelper.save(farm1);
-
         Shop shop = new Shop("new shop");
         DBHelper.save(shop);
 
-        Customer customer = new Customer ("Pat", "Edinburgh", shop);
-        DBHelper.save(customer);
-        Customer customer2 = new Customer ("Marcin", "Edinburgh", shop);
-        DBHelper.save(customer2);
+        Farm farm_1 = new Farm("Animal Farms", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
+        Farm farm_2 = new Farm("HillView", "Kevlag", "Alloa 8", FuelConversionFactorType.DIESEL);
+        Farm farm_3 = new Farm("BenAvis", "Smith", "BogAvenue", FuelConversionFactorType.HYBRID);
+        String bio1 = "cool bio";
+        String bio2 = "super cool bio";
+        String bio3 = "It is full of stars";
+        farm_1.setBio(bio1);
+        farm_2.setBio(bio1);
+        farm_3.setBio(bio1);
+        DBHelper.save(farm_1);
+        DBHelper.save(farm_2);
+        DBHelper.save(farm_3);
 
-        Basket basket_1 = new Basket(customer);
-        Basket basket2 = new Basket(customer2);
+
+        Customer customer_1 = new Customer ("Pat", "Edinburgh", shop);
+        Customer customer_2 = new Customer ("Mike", "Livingston", shop);
+        Customer customer_3 = new Customer ("Stuu", "Glasgow", shop);
+        DBHelper.save(customer_1);
+        DBHelper.save(customer_2);
+        DBHelper.save(customer_3);
+
+        Basket basket_1 = new Basket(customer_1);
+        Basket basket_2 = new Basket(customer_2);
+        Basket basket_3 = new Basket(customer_3);
         DBHelper.save(basket_1);
-        DBHelper.save(basket2);
-        List<Basket> giveMeBaskets = DBHelper.getAll(Basket.class);
+        DBHelper.save(basket_2);
+        DBHelper.save(basket_3);
 
-        customer.addBasket(basket_1);
-        DBHelper.update(customer);
+        Product product_1 = new Product("Mary Rose potatoes", GroupType.TUBERS, TagType.ORGANIC,1, farm_1, shop);
+        Product product_2 = new Product("Jones potatoes ", GroupType.TUBERS, TagType.ORGANIC,1.5, farm_2, shop);
+        Product product_3 = new Product("strawberries", GroupType.FRUITS, TagType.ORGANIC,.3, farm_2, shop);
+        Product product_4 = new Product("chicken", GroupType.MEAT, TagType.ORGANIC,.5, farm_3, shop);
+        DBHelper.save(product_1);
+        DBHelper.save(product_2);
+        DBHelper.save(product_3);
+        DBHelper.save(product_4);
 
+//        List<Product> products = DBFarm.allProductsFrom(farm_2);
+//
+//        Product productTest = DBHelper.find(1, Product.class);
 
+//        List<Product> productTest2 =  DBHelper.getAll(Product.class);
+//
+////        DBHelper.delete(product1);
+//
+//        List<Product> productList = DBShop.allProductsForShop();
+//
+//        List<Basket> baskets = DBHelper.getAll(Basket.class);
+//
+//        List<Customer> basketsTest = DBHelper.getAll(Customer.class);
+//
+//        List<Farm> farms = DBHelper.getAll(Farm.class);
+//
+//        List<Shop>  shops = DBHelper.getAll(Shop.class);
+//
+//        List<Basket> basketsOfCustomer = DBCustomer.allBaskets(customer_1);
 
-        Product product1 = new Product("potatoes", GroupType.DAIRY, TagType.ORGANIC,1, farm1, shop);
-        DBHelper.save(product1);
-
-        product1.setProductName("ziemniaki");
-        DBHelper.update(product1);
-
-        Product productTest = DBHelper.find(1, Product.class);
-
-        List<Product> productTest2 =  DBHelper.getAll(Product.class);
-
-//        DBHelper.delete(product1);
-
-        List<Product> productList = DBShop.allProductsForShop();
-
-        List<Basket> baskets = DBHelper.getAll(Basket.class);
-
-        List<Customer> basketsTest = DBHelper.getAll(Customer.class);
-
-        List<Farm> farms = DBHelper.getAll(Farm.class);
-
-        List<Shop>  shops = DBHelper.getAll(Shop.class);
-
-        List<Basket> basketsOfCustomer = DBCustomer.allBaskets(customer);
     }
 }

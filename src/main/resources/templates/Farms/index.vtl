@@ -1,4 +1,25 @@
 
 <p class="pag_header">All farms</p>
 
-$farms
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Farm name</th>
+        <th>Farmer name</th>
+        <th>Bio</th>
+        <th>Address</th>
+        <th>Fuel type</th>
+    </tr>
+
+    #foreach($farm in $farms)
+    <tr>
+        <td>$farm.getId()</td>
+        <th>$farm.getFarmName()</th>
+        <th>$farm.getFarmerName()</th>
+        <th>$farm.getBio()</th>
+        <th>$farm.getAddress()</th>
+        <th>$farm.getFuelConversionFactorType().getDescription()</th>
+    </tr>
+    #end
+
+</table>
