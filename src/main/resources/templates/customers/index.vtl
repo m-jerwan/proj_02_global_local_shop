@@ -4,5 +4,22 @@
     <a href="/customers/new" class="button center">New Customer</a>
 </div>
 
-$customers
 
+
+<table>
+    <tr>
+        <th> Name</th>
+        <th> Address </th>
+        <th></th>
+    </tr>
+    #foreach ($customer in $customers)
+    <tr>
+        <td>$customer.getCustomerName()</td>
+        <td>$customer.getCustomerAddress()</td>
+        <td><a href="/customers/$customer.getId()" class="button center">Details</a></td>
+    </tr>
+    #end
+</table>
+
+<p> All customers </p>
+$customers

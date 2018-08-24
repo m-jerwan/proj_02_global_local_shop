@@ -6,7 +6,16 @@
     <label for="customerName"> Name:</label>
     <input class="inputbox" type="text" name="customerName" required="true" id="customerName">
 
+    <label for="customerAddress"> Address:</label>
+    <input class="inputbox" type="text" name="customerAddress" required="true" id="customerAddress">
 
+
+    <label for="shop"> Shop </label>
+    <select id="shop" name="shop" hidden>
+        #foreach  ($shop in $shops)
+        <option value="$shop.getId()">$shop.getShopName()</option>
+        #end
+    </select>
 
     <input type="submit" value="Save" class="button">
 

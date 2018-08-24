@@ -21,6 +21,18 @@ public class CustomersController {
 
     private void setupEndpoints() {
 
+        get("/customers/:id/edit", (req, res) -> {
+            Customer customer = DBHelper.find(Integer.parseInt(req.params(":id")), Customer.class);
+
+            Map<String, Object> model = new HashMap<>();
+            List<Shop> shops =DBHelper.getAll(Shop.class);
+
+            model.put("shops", shops);
+            model.put("customer", customer);
+            model.put("template", "templates/customers/edit.vtl");
+            return new ModelAndView(model,"templates/layout.vtl" );
+        }, new VelocityTemplateEngine());
+
         get("/customers", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Customer> customers = DBHelper.getAll(Customer.class);
@@ -32,6 +44,8 @@ public class CustomersController {
 
         get("/customers/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            List<Shop> shops =DBHelper.getAll(Shop.class);
+            model.put("shops", shops);
             model.put("template", "templates/customers/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
@@ -49,6 +63,36 @@ public class CustomersController {
         }, new VelocityTemplateEngine());
 
 
+        get("/customers/:id", (req, res) -> {
+            Customer customer = DBHelper.find(Integer.parseInt(req.params(":id")), Customer.class);
+            Map<String, Object> model = new HashMap<>();
+            model.put("customer", customer);
+            model.put("template", "templates/customers/show.vtl");
+            return new ModelAndView(model,"templates/layout.vtl" );
+        }, new VelocityTemplateEngine());
+
+
+        post("/customers/:id", (req, res) -> {
+            Customer customer = DBHelper.find(Integer.parseInt(req.params(":id")), Customer.class);
+            int shopId = Integer.parseInt(req.queryParams(("shop")));
+            Shop shop = DBHelper.find(shopId, Shop.class);
+            String customerName = req.queryParams("customerName");
+            String customerAddress = req.queryParams("customerAddress");
+
+            customer.setCustomerName(customerName);
+            customer.setCustomerAddress(customerAddress);
+            customer.setShop(shop);
+            DBHelper.update(customer);
+            res.redirect("/customers");
+            return null;
+        }, new VelocityTemplateEngine());
+
+        post("/customers/:id/delete", (req, res) -> {
+            Customer customer = DBHelper.find(Integer.parseInt(req.params(":id")), Customer.class);
+            DBHelper.delete(customer);
+            res.redirect("/customers");
+            return null;
+        }, new VelocityTemplateEngine());
+
     }
 }
-

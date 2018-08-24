@@ -1,0 +1,23 @@
+<p class="page_header">Customer details</p>
+
+<table>
+<tr>
+    <th> Name</th>
+    <th> Address </th>
+
+</tr>
+<tr>
+    <td>$customer.getCustomerName()</td>
+    <td>$customer.getCustomerAddress()</td>
+</tr>
+</table>
+
+
+<a href="/customers/$customer.getId()/edit" class="button center">Edit</a>
+
+<form action="/customers/$customer.getId()/delete" method="post">
+    <input type="submit" value="Delete" class="button center">
+</form>
+
+
+<a href="/customers" class="button center">Back to list</a>
