@@ -1,0 +1,27 @@
+<p>Hallo</p>
+
+
+<div>
+    <a href="/procuts/new" class="button center">New Product</a>
+</div>
+
+
+
+<table>
+    <tr>
+        <th> Name</th>
+        <th> Weight </th>
+        <th></th>
+    </tr>
+    #foreach ($product in $products)
+    <tr>
+        <td>$product.getProductName()</td>
+        <td>$product.getWeight()</td>
+        <td></td>
+        <td><a href="/products/$product.getId()" class="button center">Details</a></td>
+    </tr>
+    #end
+</table>
+
+<p> All products </p>
+$products
