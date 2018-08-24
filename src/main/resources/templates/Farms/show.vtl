@@ -1,3 +1,45 @@
-<p class="page_header">Farm details</p>
+<p class="pag_header">Farms details</p>
 
-$farm
+<table>
+    <tr>
+        <th>Id</th>
+        <th>|</th>
+        <th>Farm name</th>
+        <th>|</th>
+        <th>Farmer name</th>
+        <th>|</th>
+        <th>Bio</th>
+        <th>|</th>
+        <th>Address</th>
+        <th>|</th>
+        <th>Fuel type</th>
+        <th>|</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr>
+        <td>$farm.getId()</td>
+        <td>|</td>
+        <td>$farm.getFarmName()</td>
+        <td>|</td>
+        <td>$farm.getFarmerName()</td>
+        <td>|</td>
+        <td>$farm.getBio()</td>
+        <td>|</td>
+        <td>$farm.getAddress()</td>
+        <td>|</td>
+        <td>$farm.getFuelConversionFactorType().getDescription()</td>
+        <td>|</td>
+        <td>
+            <form class= "button" action="/farms/$farm.getId()/edit" method="get">
+                <input type="submit" value="Edit" class="button">
+            </form>
+        </td>
+        <td>
+            <form class= "button" action="/farms/$farm.getId()/delete" method="post">
+                <input type="submit" value="Delete" class="button">
+            </form>
+        </td>
+    </tr>
+
+</table>

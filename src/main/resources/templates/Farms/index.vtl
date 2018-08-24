@@ -1,25 +1,32 @@
-
 <p class="pag_header">All farms</p>
 
 <table>
     <tr>
         <th>Id</th>
+        <th>|</th>
         <th>Farm name</th>
-        <th>Farmer name</th>
-        <th>Bio</th>
-        <th>Address</th>
-        <th>Fuel type</th>
+        <th>|</th>
+        <th>Actions</th>
     </tr>
 
     #foreach($farm in $farms)
     <tr>
         <td>$farm.getId()</td>
-        <th>$farm.getFarmName()</th>
-        <th>$farm.getFarmerName()</th>
-        <th>$farm.getBio()</th>
-        <th>$farm.getAddress()</th>
-        <th>$farm.getFuelConversionFactorType().getDescription()</th>
+        <td>|</td>
+        <td>$farm.getFarmName()</td>
+        <td>|</td>
+        <td>
+            <form class= "button" action="/farms/$farm.getId()" method="get">
+                <input type="submit" value="Details" class="button">
+            </form>
+        </td>
+        <td>
+             <form class= "button" action="/farms/$farm.getId()/delete" method="post">
+                <input type="submit" value="Delete" class="button">
+            </form>
+        </td>
     </tr>
+
     #end
 
 </table>
