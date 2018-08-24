@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class FarmController {
 
@@ -35,8 +36,29 @@ public class FarmController {
             model.put("farms", farms);
             model.put("template", "templates/farms/new.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
-        }, new VelocityTemplateEngine());
+            }, new VelocityTemplateEngine());
 
+//create
+
+        //THIS IS NOT USED YET
+        post("/farms", (req, res) -> {
+
+            //todo: get all info from queryParams
+
+            Farm farm = new Farm(); //todo: not def constructor
+            DBHelper.save(farm);
+            res.redirect("/farms");
+            return null;
+        });
+
+//show
+        get("/farms/:id", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            Farm farm = DBHelper.find(Integer.parseInt(req.params(":id")), Farm.class);
+            model.put("farm", farm);
+            model.put("template", "templates/farms/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 
 
 

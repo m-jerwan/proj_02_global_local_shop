@@ -1,5 +1,6 @@
 package Controllers;
 
+import db.Seeds;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -11,7 +12,7 @@ import static spark.Spark.get;
 public class MainController {
 
     public static void main(String[] args) {
-//        Seeds.seedData();
+        Seeds.seedData();
 
 
         FarmController farmController = new FarmController();
