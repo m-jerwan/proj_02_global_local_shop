@@ -54,6 +54,8 @@ public class FarmController {
             Map<String, Object> model = new HashMap<>();
             Farm farm = DBHelper.find(Integer.parseInt(req.params(":id")), Farm.class);
             model.put("farm", farm);
+            List<Product> allProductsFromFarm= DBFarm.allProductsFrom(farm);
+            model.put("allProductsFromFarm", allProductsFromFarm);
             model.put("template", "templates/farms/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());

@@ -2,7 +2,7 @@
 
 <table>
     <tr>
-        <th>Id</th>
+        <th>Farm Id</th>
         <th>|</th>
         <th>Farm name</th>
         <th>|</th>
@@ -41,5 +41,36 @@
             </form>
         </td>
     </tr>
-
 </table>
+
+<p class="pag_header">Products from Farm:</p>
+
+
+    <table>
+        <tr>
+            <th>Product Id</th>
+            <th>|</th>
+            <th>Product name</th>
+            <th>|</th>
+            <th>Group</th>
+            <th>|</th>
+            <th>Tag</th>
+            <th>|</th>
+            <th>Weight</th>
+        </tr>
+        <tr>
+        <tr>
+        #foreach ($product in $allProductsFromFarm)
+            <td>$product.getId()</td>
+            <td>|</td>
+            <td>$product.getProductName()</td>
+            <td>|</td>
+            <td>$product.getGroupType().getDescription()</td>
+            <td>|</td>
+            <td>$product.getTag().getDescription()</td>
+            <td>|</td>
+            <td>$product.getWeight()kg</td>
+    </tr>
+        #end
+
+    </table>

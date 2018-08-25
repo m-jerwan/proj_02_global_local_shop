@@ -17,16 +17,16 @@ public enum GroupType {
     TUBERS("tubers", 1),
     VEGETEABLES("vegeteables", 1);
 
-    private String foodType;
+    private String description;
     private double foodConversionFactor;
 
-    GroupType(String foodType, double foodConversionFactor) {
-        this.foodType = foodType;
+    GroupType(String description, double foodConversionFactor) {
+        this.description = description;
         this.foodConversionFactor = foodConversionFactor;
     }
 
-    public String getFoodType() {
-        return foodType;
+    public String getDescription() {
+        return description;
     }
 
     public double getFoodConversionFactor() {
