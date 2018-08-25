@@ -29,7 +29,6 @@ public class ProductsController {
             List<Farm> farms = DBHelper.getAll(Farm.class);
             EnumSet<TagType> tags = EnumSet.allOf(TagType.class);
             EnumSet<GroupType> foodGroupTypes = EnumSet.allOf(GroupType.class);
-            foodGroupTypes.name;
             model.put("foodgrouptypes", foodGroupTypes);
             model.put("tags", tags);
             model.put("baskets", baskets);
