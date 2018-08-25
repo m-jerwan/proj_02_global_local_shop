@@ -13,7 +13,7 @@
     <label for="Tag"> Tag </label>
     <select id="tag" name="tag" >
         #foreach ($tag in $tags)
-        <option>$tag.getDescription()</option>
+        <option value="$tag">$tag.getDescription()</option>
         #end
     </select>
 
@@ -21,7 +21,7 @@
     <label for="FoodGroupType"> Food Group Type </label>
 <select id ="foodGroupType" name="foodGroupType">
     #foreach ($foodGroupType in $foodgrouptypes)
-    <option value="$foodGroupType.getFoodType()">$foodGroupType.getFoodType() </option>
+    <option value="$foodGroupType">$foodGroupType </option>
     #end
 </select>
 

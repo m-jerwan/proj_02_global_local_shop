@@ -27,7 +27,7 @@ public class ProductsController {
             List<Basket> baskets =DBHelper.getAll(Basket.class);
             List<Shop> shops =DBHelper.getAll(Shop.class);
             List<Farm> farms = DBHelper.getAll(Farm.class);
-            List<TagType> tags =DBHelper.getAll(TagType.class);
+            EnumSet<TagType> tags = EnumSet.allOf(TagType.class);
             EnumSet<GroupType> foodGroupTypes = EnumSet.allOf(GroupType.class);
             model.put("foodgrouptypes", foodGroupTypes);
             model.put("tags", tags);
@@ -49,9 +49,14 @@ public class ProductsController {
             Farm farm = DBHelper.find(farmId, Farm.class);
             int basketId = Integer.parseInt(req.queryParams(("basket")));
             Basket basket = DBHelper.find(basketId, Basket.class);
+            String groupString = req.queryParams("foodGroupType").toString();
+            GroupType groupType = GroupType.valueOf(groupString);
+            String tagString = req.queryParams("tag").toString();
+            TagType tag = TagType.valueOf(tagString);
 
-            GroupType groupType = GroupType.valueOf(req.queryParams("foodGroupType"));
-            TagType tag = TagType.valueOf(req.queryParams("tagType"));
+
+//            String tagString = req.queryParams("tags").toString();
+//            TagType tag = TagType.ORGANIC;
 
 
             Product product = new Product(productName, groupType, tag, productWeight, farm, shop);
