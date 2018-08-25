@@ -77,6 +77,8 @@ public class FarmController {
             Map<String, Object> model = new HashMap<>();
             Farm farm = DBHelper.find(Integer.parseInt(req.params(":id")), Farm.class);
             model.put("farm", farm);
+            List<FuelConversionFactorType> fuelConversionFactorTypes = FuelConversionFactorType.getAllFuelTypes();
+            model.put("fuelConversionFactorTypes", fuelConversionFactorTypes);
             model.put("template", "templates/farms/edit.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
@@ -84,11 +86,15 @@ public class FarmController {
         //THIS IS NOT USED YET
         post("/farms/:id", (req, res) -> {
 
-            //todo: get all info from queryParams
-
-            Farm farm = new Farm(); //todo: not def constructor
-            farm.setId(Integer.parseInt(req.params(":id")));
-            DBHelper.update(farm);
+            String farmName = req.queryParams("farm_name");
+            String farmerName = req.queryParams("farmer_name");
+            String bio = req.queryParams("bio");
+            String address = req.queryParams("address");
+            FuelConversionFactorType fuel = DIESEL;             //todo: change String into Enum
+            Farm newFarm = new Farm(farmName, farmerName, address, fuel);
+            newFarm.setBio(bio);
+            newFarm.setId(Integer.parseInt(req.params(":id")));
+            DBHelper.update(newFarm);
             res.redirect("/farms/" + req.params(":id"));
             return null;
         });
