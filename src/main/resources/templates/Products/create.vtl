@@ -33,9 +33,9 @@
         #end
     </select>
 
-    <label for="farm"> farm </label>
+    <label for="farm"> Farm </label>
     <select id="farm" name="farm" >
-        #foreach  ($farm in $farms)
+        #foreach ($farm in $farms)
         <option value="$farm.getId()">$farm.getFarmName()</option>
         #end
     </select>

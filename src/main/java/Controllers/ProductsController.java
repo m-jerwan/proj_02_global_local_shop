@@ -22,6 +22,25 @@ public class ProductsController {
     private void setupEndpoints(){
 
 
+        get("/products/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            Product product = DBHelper.find(Integer.parseInt(req.params(":id")), Product.class);
+            List<Basket> baskets =DBHelper.getAll(Basket.class);
+            List<Shop> shops =DBHelper.getAll(Shop.class);
+            List<Farm> farms = DBHelper.getAll(Farm.class);
+            EnumSet<TagType> tags = EnumSet.allOf(TagType.class);
+            EnumSet<GroupType> foodGroupTypes = EnumSet.allOf(GroupType.class);
+            model.put("foodgrouptypes", foodGroupTypes);
+            model.put("tags", tags);
+            model.put("baskets", baskets);
+            model.put("shops", shops);
+            model.put("farms", farms);
+            model.put("product", product);
+            model.put("template", "templates/products/edit.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
         get("/products/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Basket> baskets =DBHelper.getAll(Basket.class);
@@ -39,6 +58,14 @@ public class ProductsController {
         }, new VelocityTemplateEngine());
 
 
+        get("/products/:id", (req, res) -> {
+            Product product = DBHelper.find(Integer.parseInt(req.params(":id")), Product.class);
+            Map<String, Object> model = new HashMap<>();
+            model.put("product", product);
+            model.put("template", "templates/products/show.vtl");
+            return new ModelAndView(model,"templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
 
         post("/products", (req, res) ->{
             String productName = req.queryParams("productName");
@@ -53,12 +80,6 @@ public class ProductsController {
             GroupType groupType = GroupType.valueOf(groupString);
             String tagString = req.queryParams("tag").toString();
             TagType tag = TagType.valueOf(tagString);
-
-
-//            String tagString = req.queryParams("tags").toString();
-//            TagType tag = TagType.ORGANIC;
-
-
             Product product = new Product(productName, groupType, tag, productWeight, farm, shop);
             DBHelper.save(product);
             res.redirect("/products");
@@ -66,19 +87,6 @@ public class ProductsController {
 
         }, new VelocityTemplateEngine());
 
-
-
-
-        post("/customers", (req, res) -> {
-            int shopId = Integer.parseInt(req.queryParams(("shop")));
-            Shop shop = DBHelper.find(shopId, Shop.class);
-            String customerName = req.queryParams("customerName");
-            String customerAddress = req.queryParams("customerAddress");
-            Customer customer = new Customer(customerName, customerAddress, shop);
-            DBHelper.save(customer);
-            res.redirect("/customers");
-            return null;
-        }, new VelocityTemplateEngine());
 
 
 
@@ -91,14 +99,14 @@ public class ProductsController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        get("/products/:id", (req, res) -> {
-            Product product = DBHelper.find(Integer.parseInt(req.params(":id")), Product.class);
-            Map<String, Object> model = new HashMap<>();
-            model.put("product", product);
-            model.put("template", "templates/products/show.vtl");
-            return new ModelAndView(model,"templates/layout.vtl");
-        }, new VelocityTemplateEngine());
 
+
+        post("/products/:id/delete", (req, res) -> {
+            Product product = DBHelper.find(Integer.parseInt(req.params(":id")), Product.class);
+            DBHelper.delete(product);
+            res.redirect("/products");
+            return null;
+        }, new VelocityTemplateEngine());
 
 
 
