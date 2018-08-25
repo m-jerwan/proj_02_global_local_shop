@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 public class ProductsController {
 
@@ -36,6 +37,44 @@ public class ProductsController {
             model.put("template", "templates/products/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+
+
+        post("/products", (req, res) ->{
+            String productName = req.queryParams("productName");
+            Double productWeight = Double.parseDouble(req.queryParams("productWeight"));
+            int shopId = Integer.parseInt(req.queryParams(("shop")));
+            Shop shop = DBHelper.find(shopId, Shop.class);
+            int farmId = Integer.parseInt(req.queryParams(("farm")));
+            Farm farm = DBHelper.find(farmId, Farm.class);
+            int basketId = Integer.parseInt(req.queryParams(("basket")));
+            Basket basket = DBHelper.find(basketId, Basket.class);
+            GroupType groupType = GroupType.valueOf(req.queryParams("foodGroupType"));
+            TagType tag = TagType.valueOf(req.queryParams("tagType"));
+//            String TagType = (req.queryParams("tagType"));
+            Product product = new Product(productName, groupType, tag, productWeight, farm, shop);
+            DBHelper.save(product);
+            res.redirect("/products");
+            return null;
+
+        }, new VelocityTemplateEngine());
+
+
+
+
+        post("/customers", (req, res) -> {
+            int shopId = Integer.parseInt(req.queryParams(("shop")));
+            Shop shop = DBHelper.find(shopId, Shop.class);
+            String customerName = req.queryParams("customerName");
+            String customerAddress = req.queryParams("customerAddress");
+            Customer customer = new Customer(customerName, customerAddress, shop);
+            DBHelper.save(customer);
+            res.redirect("/customers");
+            return null;
+        }, new VelocityTemplateEngine());
+
+
+
 
         get("/products", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
