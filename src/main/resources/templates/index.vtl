@@ -1,1 +1,29 @@
-<p>Hallo</p>
+
+<form action="/" method="get">
+    <label for="customers_sign_in"> Customer login </label>
+    <select name="customersSignIn" id="customers_sign_in">
+        #foreach ($customer in $customers)
+        <option value="$customer.getCustomerName()">$customer.getCustomerName()</option>
+        #end
+    </select>
+    <input type="submit" value="Sign In" class="button">
+</form>
+<form action="/customers/new" method="get">
+    <input type="submit" value="Sign On" class="button">
+</form>
+
+
+
+
+<form action="/" method="get">
+    <label for="farmers_login"> Farmer login </label>
+    <select name="farmersLogin" id="farmers_login">
+        #foreach ($farm in $farms)
+        <option value="$farm.getFarmerName()">$farm.getFarmerName()</option>
+        #end
+    </select>
+    <input type="submit" value="Sign In" class="button">
+</form>
+<form action="/farms/new" method="get">
+    <input type="submit" value="Sign On" class="button">
+</form>
