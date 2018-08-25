@@ -5,6 +5,7 @@ import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,8 +26,8 @@ public class ProductsController {
             List<Basket> baskets =DBHelper.getAll(Basket.class);
             List<Shop> shops =DBHelper.getAll(Shop.class);
             List<Farm> farms = DBHelper.getAll(Farm.class);
-            List<TagType> tags = DBHelper.getAll(TagType.class);
-            List<GroupType> foodGroupTypes = DBHelper.getAll(GroupType.class);
+            EnumSet<TagType> tags = EnumSet.allOf(TagType.class);
+            EnumSet<GroupType> foodGroupTypes = EnumSet.allOf(GroupType.class);
             model.put("foodgrouptypes", foodGroupTypes);
             model.put("tags", tags);
             model.put("baskets", baskets);
