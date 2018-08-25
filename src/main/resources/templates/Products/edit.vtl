@@ -36,9 +36,7 @@
     <label for="basket"> Basket </label>
     <select id="basket" name="basket" >
         #foreach ($basket in $baskets)
-        #if ($basket.getId() == $product.getBasket().getId())
         <option value="$basket.getId()"> $basket </option>
-        #end
         #end
     </select>
 

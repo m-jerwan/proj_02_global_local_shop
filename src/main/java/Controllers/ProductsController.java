@@ -5,10 +5,7 @@ import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
@@ -45,6 +42,9 @@ public class ProductsController {
         post("/products/:id", (req, res) -> {
             Product product = DBHelper.find(Integer.parseInt(req.params(":id")), Product.class);
             String productName = req.queryParams("productName");
+
+            Set params = req.queryParams();
+
             Double productWeight = Double.parseDouble(req.queryParams("productWeight"));
             int shopId = Integer.parseInt(req.queryParams(("shop")));
             Shop shop = DBHelper.find(shopId, Shop.class);
@@ -56,8 +56,6 @@ public class ProductsController {
             GroupType groupType = GroupType.valueOf(groupString);
             String tagString = req.queryParams("tag").toString();
             TagType tag = TagType.valueOf(tagString);
-
-
             product.setProductName(productName);
             product.setWeight(productWeight);
             product.setFarm(farm);
