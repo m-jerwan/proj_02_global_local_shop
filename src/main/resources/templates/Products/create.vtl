@@ -1,0 +1,53 @@
+<p> Test </p>
+
+
+<form action="/products" method="post">
+
+
+    <label for="productName"> Name:</label>
+    <input class="inputbox" type="text" name="productName" required="true" id="productName">
+
+    <label for="productWeight"> Weight:</label>
+    <input class="inputbox" type="text" name="productWeight" required="true" id="productWeight">
+
+    <label for="Tag"> Tag </label>
+    <select id="tag" name="tag" >
+        #foreach ($tag in $tags)
+        <option value="$tag.getDescription()">$tag.getDescription()</option>
+        #end
+    </select>
+
+
+    <label for="FoodGroupType"> Food Group Type </label>
+<select id ="foodGroupType" name="foodGroupType">
+    #foreach ($foodGroupType in $foodgrouptypes)
+    <option value="">$foodGroupType.getFoodType() </option>
+    #end
+</select>
+
+
+    <label for="shop"> Shop </label>
+    <select id="shop" name="shop" >
+        #foreach  ($shop in $shops)
+        <option value="$shop.getId()">$shop.getShopName()</option>
+        #end
+    </select>
+
+    <label for="farm"> farm </label>
+    <select id="farm" name="farm" >
+        #foreach  ($farm in $farms)
+        <option value="$farm.getId()">$farm.getFarmName()</option>
+        #end
+    </select>
+
+
+    <label for="basket"> basket </label>
+    <select id="basket" name="basket" >
+        #foreach  ($basket in $baskets)
+        <option value="$basket.getId()"> $basket</option>
+        #end
+    </select>
+
+    <input type="submit" value="Save" class="button">
+
+</form>

@@ -1,7 +1,7 @@
 package Controllers;
 
 import db.DBHelper;
-import models.Product;
+import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -20,6 +20,22 @@ public class ProductsController {
     private void setupEndpoints(){
 
 
+        get("/products/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Basket> baskets =DBHelper.getAll(Basket.class);
+            List<Shop> shops =DBHelper.getAll(Shop.class);
+            List<Farm> farms = DBHelper.getAll(Farm.class);
+            List<TagType> tags = DBHelper.getAll(TagType.class);
+            List<GroupType> foodGroupTypes = DBHelper.getAll(GroupType.class);
+            model.put("foodgrouptypes", foodGroupTypes);
+            model.put("tags", tags);
+            model.put("baskets", baskets);
+            model.put("shops", shops);
+            model.put("farms", farms);
+            model.put("template", "templates/products/create.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
         get("/products", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Product> products = DBHelper.getAll(Product.class);
@@ -28,6 +44,13 @@ public class ProductsController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        get("/products/:id", (req, res) -> {
+            Product product = DBHelper.find(Integer.parseInt(req.params(":id")), Product.class);
+            Map<String, Object> model = new HashMap<>();
+            model.put("product", product);
+            model.put("template", "templates/products/show.vtl");
+            return new ModelAndView(model,"templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 
 
 
