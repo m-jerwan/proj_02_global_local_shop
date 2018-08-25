@@ -13,7 +13,7 @@
     <label for="Tag"> Tag </label>
     <select id="tag" name="tag" >
         #foreach ($tag in $tags)
-        <option value="$tag.getDescription()">$tag.getDescription()</option>
+        <option>$tag.getDescription()</option>
         #end
     </select>
 
@@ -21,7 +21,7 @@
     <label for="FoodGroupType"> Food Group Type </label>
 <select id ="foodGroupType" name="foodGroupType">
     #foreach ($foodGroupType in $foodgrouptypes)
-    <option value="">$foodGroupType.getFoodType() </option>
+    <option value="$foodGroupType.getFoodType()">$foodGroupType.getFoodType() </option>
     #end
 </select>
 
@@ -41,7 +41,7 @@
     </select>
 
 
-    <label for="basket"> basket </label>
+    <label for="basket" hidden> basket </label>
     <select id="basket" name="basket" >
         #foreach  ($basket in $baskets)
         <option value="$basket.getId()"> $basket</option>
