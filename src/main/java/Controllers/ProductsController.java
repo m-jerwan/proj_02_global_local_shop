@@ -41,6 +41,35 @@ public class ProductsController {
         }, new VelocityTemplateEngine());
 
 
+
+        post("/products/:id", (req, res) -> {
+            Product product = DBHelper.find(Integer.parseInt(req.params(":id")), Product.class);
+            String productName = req.queryParams("productName");
+            Double productWeight = Double.parseDouble(req.queryParams("productWeight"));
+            int shopId = Integer.parseInt(req.queryParams(("shop")));
+            Shop shop = DBHelper.find(shopId, Shop.class);
+            int farmId = Integer.parseInt(req.queryParams(("farm")));
+            Farm farm = DBHelper.find(farmId, Farm.class);
+            int basketId = Integer.parseInt(req.queryParams(("basket")));
+            Basket basket = DBHelper.find(basketId, Basket.class);
+            String groupString = req.queryParams("foodGroupType").toString();
+            GroupType groupType = GroupType.valueOf(groupString);
+            String tagString = req.queryParams("tag").toString();
+            TagType tag = TagType.valueOf(tagString);
+
+
+            product.setProductName(productName);
+            product.setWeight(productWeight);
+            product.setFarm(farm);
+            product.setBasket(basket);
+            product.setGroupType(groupType);
+            product.setTag(tag);
+            product.setShop(shop);
+            DBHelper.update(product);
+            res.redirect("/products");
+            return null;
+        }, new VelocityTemplateEngine());
+
         get("/products/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Basket> baskets =DBHelper.getAll(Basket.class);
@@ -67,6 +96,10 @@ public class ProductsController {
         }, new VelocityTemplateEngine());
 
 
+
+
+
+
         post("/products", (req, res) ->{
             String productName = req.queryParams("productName");
             Double productWeight = Double.parseDouble(req.queryParams("productWeight"));
@@ -89,8 +122,6 @@ public class ProductsController {
 
 
 
-
-
         get("/products", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Product> products = DBHelper.getAll(Product.class);
@@ -107,6 +138,8 @@ public class ProductsController {
             res.redirect("/products");
             return null;
         }, new VelocityTemplateEngine());
+
+
 
 
 
