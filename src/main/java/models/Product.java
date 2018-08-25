@@ -78,7 +78,7 @@ public class Product {
         this.weight = weight;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "farm_id", nullable = false)
     public Farm getFarm() {
         return farm;
