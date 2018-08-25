@@ -1,11 +1,4 @@
-<p>Hallo</p>
-
-
-<div>
-    <a href= "/products/new" class="button center">New Product</a>
-</div>
-
-
+<p> Selected product </p>
 
 <table>
     <tr>
@@ -17,17 +10,21 @@
 
         <th></th>
     </tr>
-    #foreach ($product in $products)
     <tr>
         <td>$product.getProductName()</td>
         <td>$product.getWeight()</td>
         <td>$product.getGroupType()</td>
         <td>$product.getTag()</td>
-        <td>$product.getFarm</td>
-        <td><a href="/products/$product.getId()" class="button center">Details</a></td>
+        <td>$product.getFarm()</td>
     </tr>
-    #end
 </table>
 
-<p> All products </p>
-$products
+
+<a href="/products/$product.getId()/edit" class="button center">Edit</a>
+
+<form action="/products/$product.getId()/delete" method="post">
+    <input type="submit" value="Delete" class="button center">
+</form>
+
+
+<a href="/products" class="button center">Back to list</a>

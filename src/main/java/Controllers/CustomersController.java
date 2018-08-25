@@ -26,9 +26,10 @@ public class CustomersController {
 
             Map<String, Object> model = new HashMap<>();
             List<Shop> shops =DBHelper.getAll(Shop.class);
-
             model.put("shops", shops);
             model.put("customer", customer);
+
+
             model.put("template", "templates/customers/edit.vtl");
             return new ModelAndView(model,"templates/layout.vtl" );
         }, new VelocityTemplateEngine());
