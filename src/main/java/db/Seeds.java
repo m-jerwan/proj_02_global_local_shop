@@ -12,9 +12,9 @@ public class Seeds {
         Farm farm_1 = new Farm("Animal Farms", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
         Farm farm_2 = new Farm("HillView", "Kevlag", "Alloa 8", FuelConversionFactorType.DIESEL);
         Farm farm_3 = new Farm("BenAvis", "Smith", "BogAvenue", FuelConversionFactorType.HYBRID);
-        String bio1 = "cool bio";
-        String bio2 = "super cool bio";
-        String bio3 = "It is full of stars";
+        String bio1 = "Doggo ipsum borkf woofer many pats dat tungg tho, wow very biscit. Smol borking doggo with a long sno, many pater shibe many pats clouds shibe";
+        String bio2 = "Doggo ipsum borkf woofer many pats dat tungg tho, wow very biscit. Smol borking doggo with a long sno, many pater shibe many pats clouds shibe";
+        String bio3 = "Doggo ipsum borkf woofer many pats dat tungg tho, wow very biscit. Smol borking doggo with a long sno, many pater shibe many pats clouds shibe";
         farm_1.setBio(bio1);
         farm_2.setBio(bio2);
         farm_3.setBio(bio3);

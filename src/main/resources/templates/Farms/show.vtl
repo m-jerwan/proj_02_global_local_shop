@@ -1,4 +1,4 @@
-<p class="pag_header">Farms details</p>
+<h3 class="pag_header">Farms details</h3>
 
 <table>
     <tr>
@@ -7,8 +7,7 @@
         <th>Farm name</th>
         <th>|</th>
         <th>Farmer name</th>
-        <th>|</th>
-        <th>Bio</th>
+
         <th>|</th>
         <th>Address</th>
         <th>|</th>
@@ -24,53 +23,55 @@
         <td>|</td>
         <td>$farm.getFarmerName()</td>
         <td>|</td>
-        <td>$farm.getBio()</td>
-        <td>|</td>
         <td>$farm.getAddress()</td>
         <td>|</td>
         <td>$farm.getFuelConversionFactorType().getDescription()</td>
         <td>|</td>
         <td>
-            <form class= "button" action="/farms/$farm.getId()/edit" method="get">
+            <form class="button" action="/farms/$farm.getId()/edit" method="get">
                 <input type="submit" value="Edit" class="button">
             </form>
         </td>
         <td>
-            <form class= "button" action="/farms/$farm.getId()/delete" method="post">
+            <form class="button" action="/farms/$farm.getId()/delete" method="post">
                 <input type="submit" value="Delete" class="button">
             </form>
         </td>
     </tr>
 </table>
 
-<p class="pag_header">Products from Farm:</p>
+<h3 class="pag_header">Farm info:</h3>
+<p>$farm.getBio()</p>
 
 
-    <table>
-        <tr>
-            <th>Product Id</th>
-            <th>|</th>
-            <th>Product name</th>
-            <th>|</th>
-            <th>Group</th>
-            <th>|</th>
-            <th>Tag</th>
-            <th>|</th>
-            <th>Weight</th>
-        </tr>
-        <tr>
-        <tr>
-        #foreach ($product in $allProductsFromFarm)
-            <td>$product.getId()</td>
-            <td>|</td>
-            <td>$product.getProductName()</td>
-            <td>|</td>
-            <td>$product.getGroupType().getDescription()</td>
-            <td>|</td>
-            <td>$product.getTag().getDescription()</td>
-            <td>|</td>
-            <td>$product.getWeight()kg</td>
+<h3 class="pag_header">Products from Farm:</h3>
+
+
+<table>
+    <tr>
+        <th>Product Id</th>
+        <th>|</th>
+        <th>Product name</th>
+        <th>|</th>
+        <th>Group</th>
+        <th>|</th>
+        <th>Tag</th>
+        <th>|</th>
+        <th>Weight</th>
     </tr>
-        #end
+    <tr>
+    <tr>
+        #foreach ($product in $allProductsFromFarm)
+        <td>$product.getId()</td>
+        <td>|</td>
+        <td>$product.getProductName()</td>
+        <td>|</td>
+        <td>$product.getGroupType().getDescription()</td>
+        <td>|</td>
+        <td>$product.getTag().getDescription()</td>
+        <td>|</td>
+        <td>$product.getWeight()kg</td>
+    </tr>
+    #end
 
-    </table>
+</table>

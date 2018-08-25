@@ -22,6 +22,7 @@ public class MainController {
         FarmController farmController = new FarmController();
         CustomersController customersController = new CustomersController();
         ProductsController productsController = new ProductsController();
+        ShopController shopController = new ShopController();
 
 
         get("/", (req, res) -> {
