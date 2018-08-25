@@ -5,6 +5,7 @@ import db.DBShop;
 import models.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Runner {
@@ -68,6 +69,9 @@ public class Runner {
 //        List<Shop>  shops = DBHelper.getAll(Shop.class);
 //
 //        List<Basket> basketsOfCustomer = DBCustomer.allBaskets(customer_1);
+
+       List<int[]> tesDistances =  Distance.setUpDistances();
+
 
     }
 }
