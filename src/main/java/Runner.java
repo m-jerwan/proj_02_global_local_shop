@@ -70,8 +70,10 @@ public class Runner {
 //
 //        List<Basket> basketsOfCustomer = DBCustomer.allBaskets(customer_1);
 
-       List<int[]> tesDistances =  Distance.setUpDistances();
-
+//        List<int[]> distancesAll = Distance.setUpDistances();
+//        int tesDistances1 =  Distance.distanceBetween("eh1","eh2");
+//        int tesDistances2 =  Distance.distanceBetween("eh3","eh15");
+//        int tesDistances3 =  Distance.distanceBetween("eh14","eh15");
 
     }
 }

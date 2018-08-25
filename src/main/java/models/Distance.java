@@ -2,10 +2,12 @@ package models;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Distance {
+
+//    Simulating distance calculating API connection. Method Class will take any postcode from EH1 to EH15 and return distance;
+//    Method can't be customised to multi-City situation. Only works for same postcode area.
 
     public Distance() {}
 
@@ -32,7 +34,6 @@ public class Distance {
         distances.add(eh3);
         distances.add(eh4);
         distances.add(eh5);
-        distances.add(eh5);
         distances.add(eh6);
         distances.add(eh7);
         distances.add(eh8);
@@ -48,9 +49,13 @@ public class Distance {
     }
 
     public static Integer distanceBetween(String point1, String point2){
+//        takes string, cuts first 2 letters ("eh") and parses into Integer to be used in the grid finder
+        Integer point1Int = Integer.parseInt(point1.substring(2));
+        Integer point2Int = Integer.parseInt(point2.substring(2));
 
-
-        return null;
+        List<int[]> distances = Distance.setUpDistances() ;
+        return distances.get(point1Int-1)[point2Int-1];
     }
+
 
 }
