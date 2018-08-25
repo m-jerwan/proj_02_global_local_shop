@@ -1,5 +1,8 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum FuelConversionFactorType {
 
     PETROL ("petrol", 2.45),
@@ -22,6 +25,16 @@ public enum FuelConversionFactorType {
 
     public double getFuelConversionFactor() {
         return fuelConversionFactor;
+    }
+
+    public static List<FuelConversionFactorType> getAllFuelTypes(){
+        List<FuelConversionFactorType> fuelConversionFactorTypes = new ArrayList<>();
+        fuelConversionFactorTypes.add(PETROL);
+        fuelConversionFactorTypes.add(DIESEL);
+        fuelConversionFactorTypes.add(BIODIESEL);
+        fuelConversionFactorTypes.add(HYBRID);
+        fuelConversionFactorTypes.add(ELECTRIC);
+        return fuelConversionFactorTypes;
     }
 
 }

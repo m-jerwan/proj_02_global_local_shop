@@ -1,7 +1,7 @@
 
 <p class="pag_header">New Farm</p>
 
-<form action="/customers" method="post">
+<form action="/farms" method="post">
 
 
     <label for="farm_name"> Farm name:</label>
@@ -16,11 +16,11 @@
     <label for="address">Farm address:</label>
     <input class="inputbox" type="text" name="address" required="true" id="address">
 
-    <label for="fuel"> Fuel </label>
-    <select name="fuel" id="fuel">
-        for ($XX in $XX)
-            <option value="">XXXX</option>
-        end
+    <label for="fuelType"> Fuel </label>
+    <select name="fuelType" id="fuelType">
+        #foreach ($fuelType in $fuelConversionFactorTypes)
+            <option value="$fuelType">$fuelType.getDescription()</option>
+        #end
     </select>
 
     <input type="submit" value="Register Farm" class="button">

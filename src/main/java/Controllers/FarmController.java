@@ -3,6 +3,7 @@ package Controllers;
 import db.DBFarm;
 import db.DBHelper;
 import models.Farm;
+import models.FuelConversionFactorType;
 import models.Product;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static models.FuelConversionFactorType.DIESEL;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
@@ -38,13 +40,22 @@ public class FarmController {
         get("/farms/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/farms/new.vtl");
+            List<FuelConversionFactorType> fuelConversionFactorTypes = FuelConversionFactorType.getAllFuelTypes();
+            model.put("fuelConversionFactorTypes", fuelConversionFactorTypes);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
 // & create
 
         post("/farms", (req, res) -> {
-            //todo: get all info from queryParams
+            String farmName = req.queryParams("farm_name");
+            String farmerName = req.queryParams("farmer_name");
+            String bio = req.queryParams("bio");
+            String address = req.queryParams("address");
+            FuelConversionFactorType fuel = DIESEL;             //todo: change String into Enum
+            Farm newFarm = new Farm(farmName, farmerName, address, fuel);
+            newFarm.setBio(bio);
+            DBHelper.save(newFarm);
             res.redirect("/farms");
             return null;
         });
