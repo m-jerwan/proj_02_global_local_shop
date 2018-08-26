@@ -1,22 +1,24 @@
 <div class="purchase_confirmation">
 
+    <h3>Order is done:</h3>
 
+    #foreach ($entry in $customer.giveMeLastBasket().getProductsInBasket())
+        <p>$entry.getProductName()</p>
+    #end
 
 
 </div>
 <div class="usedFarms">
+    <h3>Farms:</h3>
 
-
-
+    #foreach ($entry in $customer.giveMeLastBasket().getProductsInBasket())
+        <p>$entry.getFarm().getFarmName()</p>
+    #end
 
 
 </div>
 
 <div class="environmental_impact_purchase">
-
-
-
-
 
 
 </div>

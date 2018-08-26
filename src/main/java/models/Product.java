@@ -88,7 +88,7 @@ public class Product {
         this.farm = farm;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "shop_id", nullable = false)
     public Shop getShop() {
         return shop;
@@ -98,7 +98,7 @@ public class Product {
         this.shop = shop;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "basket_id", nullable = true)
     public Basket getBasket() {
         return basket;

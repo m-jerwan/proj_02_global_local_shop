@@ -26,8 +26,6 @@ public class Customer {
         this.customerAddress = customerAddress;
 //        this.environmetnInfo = new HashMap<String, String>();
         this.baskets = new ArrayList<Basket>();
-        Basket basket = new Basket();
-        this.baskets.add(basket);
         this.shop = shop;
     }
 
@@ -73,7 +71,7 @@ public class Customer {
         this.baskets = baskets;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "shop_id", nullable = false)
     public Shop getShop() {
         return shop;

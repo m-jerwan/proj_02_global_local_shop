@@ -38,7 +38,7 @@ public class Basket {
         this.productsInBasket = productsInBasket;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id", nullable = false)
     public Customer getCustomer() {
         return customer;

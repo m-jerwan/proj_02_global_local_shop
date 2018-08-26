@@ -47,11 +47,22 @@ public class Runner {
         Basket basket_1 = new Basket(customer_1);
         Basket basket_2 = new Basket(customer_2);
         Basket basket_3 = new Basket(customer_3);
+        Basket basket_4 = new Basket(customer_3);
+        DBHelper.save(basket_4);
+
         DBHelper.save(basket_1);
         basket_2.addToBasket(product_2);
         DBHelper.save(basket_2);
         DBHelper.save(basket_3);
 
+
+
+        Basket basket = customer_1.giveMeLastBasket();
+
+        customer_1 = DBHelper.find(customer_1.getId(), Customer.class);
+        List<Product> products = DBHelper.getAll(Product.class);
+
+//        customer_1.giveMeLastBasket().addToBasket(product_1);
 
 
 //        List<Product> products = DBFarm.allProductsFrom(farm_2);
@@ -80,7 +91,8 @@ public class Runner {
 //        int tesDistances3 =  Distance.distanceBetween("eh14","eh15");
 
 //        customer_1.addBasket(basket_2);
-//        Product ziemniakiTest = customer_1.giveMeLastBasket().getProductsInBasket().get(0);
+
+
 
     }
 }

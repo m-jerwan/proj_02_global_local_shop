@@ -10,6 +10,8 @@ import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
+import static db.DBHelper.getUnique;
+
 public class DBCustomer {
 
     private static Session session;
@@ -28,6 +30,13 @@ public class DBCustomer {
             session.close();
         }
         return results;
+    }
+
+    public static Customer findCustomer(int id) {
+        session = HibernateUtil.getSessionFactory().openSession();
+        Criteria cr = session.createCriteria(Customer.class);
+        cr.add(Restrictions.eq("id", id));
+        return getUnique(cr);
     }
 
 }
