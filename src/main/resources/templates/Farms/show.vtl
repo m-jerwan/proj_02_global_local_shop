@@ -3,30 +3,20 @@
 <table>
     <tr>
         <th>Farm Id</th>
-        <th>|</th>
         <th>Farm name</th>
-        <th>|</th>
         <th>Farmer name</th>
 
-        <th>|</th>
         <th>Address</th>
-        <th>|</th>
         <th>Fuel type</th>
-        <th>|</th>
         <th>Actions</th>
     </tr>
 
     <tr>
         <td>$farm.getId()</td>
-        <td>|</td>
         <td>$farm.getFarmName()</td>
-        <td>|</td>
         <td>$farm.getFarmerName()</td>
-        <td>|</td>
         <td>$farm.getAddress()</td>
-        <td>|</td>
         <td>$farm.getFuelConversionFactorType().getDescription()</td>
-        <td>|</td>
         <td>
             <form class="button" action="/farms/$farm.getId()/edit" method="get">
                 <input type="submit" value="Edit" class="button">
@@ -50,26 +40,18 @@
 <table>
     <tr>
         <th>Product Id</th>
-        <th>|</th>
         <th>Product name</th>
-        <th>|</th>
         <th>Group</th>
-        <th>|</th>
         <th>Tag</th>
-        <th>|</th>
         <th>Weight</th>
     </tr>
     <tr>
     <tr>
         #foreach ($product in $allProductsFromFarm)
         <td>$product.getId()</td>
-        <td>|</td>
         <td>$product.getProductName()</td>
-        <td>|</td>
         <td>$product.getGroupType().getDescription()</td>
-        <td>|</td>
         <td>$product.getTag().getDescription()</td>
-        <td>|</td>
         <td>$product.getWeight()kg</td>
     </tr>
     #end

@@ -36,9 +36,7 @@ public class MainController {
 
             List<Customer> customers = DBHelper.getAll(Customer.class);
             model.put("customers", customers);
-
-            model.put("template", "templates/index.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
+            return new ModelAndView(model, "templates/index.vtl");
         }, new VelocityTemplateEngine());
 
     }

@@ -3,18 +3,14 @@
 <table>
     <tr>
         <th>Id</th>
-        <th>|</th>
         <th>Farm name</th>
-        <th>|</th>
         <th>Actions</th>
     </tr>
 
     #foreach($farm in $farms)
     <tr>
         <td>$farm.getId()</td>
-        <td>|</td>
         <td>$farm.getFarmName()</td>
-        <td>|</td>
         <td>
             <form class= "button" action="/farms/$farm.getId()" method="get">
                 <input type="submit" value="Details" class="button">
