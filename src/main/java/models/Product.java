@@ -109,8 +109,14 @@ public class Product {
     }
 
 
-    //OTHER METHODS
+ //OTHER METHODS
 
+
+//    RETURNS EMISSIONS OF ONE PRODUCT BASED ON QUANTITY 1 -- WE NEED TO UPDATE THE QUANTITY
+
+    public double emissionsOfProduct(){
+        return (getGroupType().getFoodConversionFactor() * 1 * this.getWeight())/1000;
+    }
 
 
 }

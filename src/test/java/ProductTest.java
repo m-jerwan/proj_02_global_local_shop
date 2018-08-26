@@ -89,4 +89,9 @@ public class ProductTest {
         assertEquals("Hillview", product_1.getFarm().getFarmName());
 
     }
+
+    @Test
+    public void canGetEmissionsOfProduct(){
+        assertEquals(0.0022835, product_1.emissionsOfProduct(),0);
+    }
 }

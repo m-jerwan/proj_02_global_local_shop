@@ -1,7 +1,8 @@
 package models;
 
 public enum TagType {
-    ORGANIC("organic");
+    ORGANIC("organic"),
+    VEGAN("vegan");
 
     private String description;
 
