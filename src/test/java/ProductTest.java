@@ -99,4 +99,9 @@ public class ProductTest {
     public void canGetEmissionsOfDistance(){
         assertEquals(0.24500000000000002, product_1.emissionsOfFoodMilesTravelled(),0);
     }
+
+    @Test
+    public void getTotalEmissions(){
+        assertEquals(0.24728350000000002, product_1.totalEmissions(),0);
+    }
 }

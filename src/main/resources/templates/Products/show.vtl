@@ -7,8 +7,7 @@
         <th> GroupType </th>
         <th> Category (Tag) </th>
         <th> Farm </th>
-        <th> Product emissions </th>
-        <th> Foodmiles emissions </th>
+
 
 
         <th></th>
@@ -19,11 +18,31 @@
         <td>$product.getGroupType()</td>
         <td>$product.getTag()</td>
         <td>$product.getFarm()</td>
-        <td>$product.emissionsOfProduct() tonnes CO2e</td>
-        <td>$product.emissionsOfFoodMilesTravelled() tonnes CO2e </td>
+
     </tr>
 </table>
 
+
+<p> Environmental Footprint of the Product </p>
+
+<table>
+    <tr>
+        <th>Product emissions </th>
+        <td>$product.emissionsOfProduct() tonnes CO2e</td>
+    </tr>
+    <tr>
+        <th>Foodmiles emissions </th>
+        <td>$product.emissionsOfFoodMilesTravelled() tonnes CO2e </td>
+    </tr>
+    <tr>
+        <th>Waste emissions </th>
+        <td>TBC</td>
+    </tr>
+    <tr>
+        <th>Total emissions</th>
+        <td>$product.totalEmissions()</td>
+    </tr>
+</table>
 
 <a href="/products/$product.getId()/edit" class="button center">Edit</a>
 

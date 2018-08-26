@@ -82,4 +82,18 @@ public class BasketTest {
         assertEquals(0.24500000000000002, basket_1.foodMilesEmissionsOfProductsInBasket(),0);
     }
 
+    @Test
+    public void canCalculateTotalEmissionsOfBasket1product(){
+        basket_1.addToBasket(product);
+        assertEquals(0.24728350000000002, basket_1.totalEmissionsCombined());
+    }
+
+    @Test
+    public void canCalculateTotalEmissionsOfBasket1(){
+        basket_1.addToBasket(product2);
+        basket_1.addToBasket(product);
+        assertEquals(0.4991340000000001, basket_1.totalEmissionsCombined());
+    }
+
+
 }

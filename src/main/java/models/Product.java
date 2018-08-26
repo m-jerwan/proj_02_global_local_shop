@@ -119,21 +119,21 @@ public class Product {
     }
 
 //
+
     public double emissionsOfProductKG(){
         return (getGroupType().getFoodConversionFactor() * 1 * this.getWeight());
     }
 
 //    RETURNS EMISSIONS OF ONE PRODUCT BASED OF DISTANCE 1 -- WE NEED TO UPDATE THE DISTANCE
 
+
     public double emissionsOfFoodMilesTravelled(){
         return (getFarm().getFuelConversionFactorType().getFuelConversionFactor() * 100)/1000;
     }
 
-
-
-//    public double getTotalEmissions(){
-//        return emissionsOfProduct()+emissionsOfFoodMilesTravelled();
-//    }
+    public double totalEmissions(){
+        return emissionsOfProduct() + emissionsOfFoodMilesTravelled();
+    }
 
 //    public double getEmissionsOfWaste(){
 //        return 0.00;

@@ -75,4 +75,12 @@ public class Basket {
         }
         return totalMilesEmissions;
     }
+
+    public double totalEmissionsCombined(){
+        double totalCombinedEmissions = 0;
+        for (Product product : productsInBasket){
+            totalCombinedEmissions += product.totalEmissions();
+        }
+        return totalCombinedEmissions;
+    }
 }

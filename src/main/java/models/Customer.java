@@ -93,6 +93,14 @@ public class Customer {
     public void removeBasket(Basket basket){
         this.baskets.remove(basket);
     }
+
+    public double emissionOfCustomersBasket(Basket basket){
+        return basket.emissionsOfProductsInBasket();
+    }
+
+
+
+
 //
 //    public void addEnvironmentalInfo(String key, String value){
 //        this.environmetnInfo.put(key, value);
