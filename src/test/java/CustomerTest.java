@@ -36,6 +36,7 @@ public class CustomerTest {
         assertEquals("Glasgow", customer_1.getCustomerAddress());
     }
 
+
 //    @Test
 //    public void canSetEnvInfo(){
 //        customer_1.addEnvironmentalInfo("co2", "test");

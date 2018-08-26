@@ -58,4 +58,21 @@ public class Basket {
     public void removeFromBasket(Product product){
         this.productsInBasket.remove(product);
     }
+
+
+    public double emissionsOfProductsInBasket(){
+        double totalEmissions =0;
+        for (Product product : productsInBasket){
+            totalEmissions += product.emissionsOfProduct();
+        }
+        return totalEmissions;
+    }
+
+    public double foodMilesEmissionsOfProductsInBasket(){
+        double totalMilesEmissions =0;
+        for (Product product : productsInBasket){
+            totalMilesEmissions += product.emissionsOfFoodMilesTravelled();
+        }
+        return totalMilesEmissions;
+    }
 }
