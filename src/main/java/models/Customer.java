@@ -2,9 +2,7 @@ package models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @Entity
@@ -28,6 +26,8 @@ public class Customer {
         this.customerAddress = customerAddress;
 //        this.environmetnInfo = new HashMap<String, String>();
         this.baskets = new ArrayList<Basket>();
+        Basket basket = new Basket();
+        this.baskets.add(basket);
         this.shop = shop;
     }
 
@@ -99,6 +99,11 @@ public class Customer {
     }
 
 
+
+    public Basket giveMeLastBasket(){
+        int numberAllBaskets = this.getBaskets().size();
+        return this.getBaskets().get(numberAllBaskets-1);
+    }
 
 
 //

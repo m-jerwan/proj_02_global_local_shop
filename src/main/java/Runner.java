@@ -34,13 +34,6 @@ public class Runner {
         DBHelper.save(customer_2);
         DBHelper.save(customer_3);
 
-        Basket basket_1 = new Basket(customer_1);
-        Basket basket_2 = new Basket(customer_2);
-        Basket basket_3 = new Basket(customer_3);
-        DBHelper.save(basket_1);
-        DBHelper.save(basket_2);
-        DBHelper.save(basket_3);
-
         Product product_1 = new Product("Mary Rose potatoes", GroupType.TUBERS, TagType.ORGANIC,1, farm_1, shop);
         Product product_2 = new Product("Jones potatoes ", GroupType.TUBERS, TagType.ORGANIC,1.5, farm_2, shop);
         Product product_3 = new Product("strawberries", GroupType.FRUITS, TagType.ORGANIC,.3, farm_2, shop);
@@ -49,6 +42,17 @@ public class Runner {
         DBHelper.save(product_2);
         DBHelper.save(product_3);
         DBHelper.save(product_4);
+
+
+        Basket basket_1 = new Basket(customer_1);
+        Basket basket_2 = new Basket(customer_2);
+        Basket basket_3 = new Basket(customer_3);
+        DBHelper.save(basket_1);
+        basket_2.addToBasket(product_2);
+        DBHelper.save(basket_2);
+        DBHelper.save(basket_3);
+
+
 
 //        List<Product> products = DBFarm.allProductsFrom(farm_2);
 //
@@ -74,6 +78,9 @@ public class Runner {
 //        int tesDistances1 =  Distance.distanceBetween("eh1","eh2");
 //        int tesDistances2 =  Distance.distanceBetween("eh3","eh15");
 //        int tesDistances3 =  Distance.distanceBetween("eh14","eh15");
+
+//        customer_1.addBasket(basket_2);
+//        Product ziemniakiTest = customer_1.giveMeLastBasket().getProductsInBasket().get(0);
 
     }
 }

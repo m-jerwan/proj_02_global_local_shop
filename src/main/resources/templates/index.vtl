@@ -1,7 +1,6 @@
-
 <form action="/shop" method="post">
     <label for="customer_sign_in"> Customer login </label>
-    <select name="customerSignIn" id="customer_sign_in">
+    <select name="customerId" id="customer_sign_in">
         #foreach ($customer in $customers)
         <option value="$customer.getId()">$customer.getCustomerName()</option>
         #end
@@ -22,6 +21,6 @@
     </select>
     <input type="submit" value="Sign In" class="button">
 </form>
-<form action="/farms/new" method="get">
+<form action="/farms/new" hidden method="get">
     <input type="submit" value="Sign On" class="button">
 </form>
