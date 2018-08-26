@@ -127,6 +127,8 @@ public class Product {
 //    RETURNS EMISSIONS OF ONE PRODUCT BASED OF DISTANCE 1 -- WE NEED TO UPDATE THE DISTANCE
 
 
+
+
     public double emissionsOfFoodMilesTravelled(){
         return (getFarm().getFuelConversionFactorType().getFuelConversionFactor() * 100)/1000;
     }
@@ -134,6 +136,20 @@ public class Product {
     public double totalEmissions(){
         return emissionsOfProduct() + emissionsOfFoodMilesTravelled();
     }
+
+
+
+//    public double emissionsOfFoodMilesTravelled(String point1, String point2){
+//        int distanceTravelled = Distance.distanceBetween(point1, point2);
+//        return (getFarm().getFuelConversionFactorType().getFuelConversionFactor() * distanceTravelled)/1000;
+//    }
+//    //    TODO: Patrycja to fix:
+//    public double totalEmissions(String point1, String point2){
+//        return emissionsOfProduct() + emissionsOfFoodMilesTravelled(point1, point2);
+//    }
+
+
+
 
 //    public double getEmissionsOfWaste(){
 //        return 0.00;
