@@ -99,7 +99,7 @@ public class FarmController {
             return null;
         });
 
-//destroy/delete    //todo: CANT DELETE A FARM -  FOREIGN KEY CONSTRAINTS
+//destroy/delete    //CANT DELETE A FARM -  FOREIGN KEY CONSTRAINTS
         post("/farms/:id/delete", (req, res) -> {
             Farm farm = DBHelper.find(Integer.parseInt(req.params(":id")), Farm.class);
             DBHelper.delete(farm);

@@ -25,8 +25,10 @@ public class ShopController {
 
 
 //index
-        get("/shop", (req, res) -> {
+        post("/shop", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            int customerId = Integer.parseInt( req.queryParams("customerSignIn"));
+            model.put("customerId", customerId);
             model.put("template", "templates/shop/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());

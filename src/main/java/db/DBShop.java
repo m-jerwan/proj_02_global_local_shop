@@ -17,7 +17,6 @@ public class DBShop {
         List<Product> results = null;
         try{
             Criteria cr = session.createCriteria(Product.class);
-            //TODO get unique results
             results =  cr.list();
 
         }catch(HibernateException ex){
