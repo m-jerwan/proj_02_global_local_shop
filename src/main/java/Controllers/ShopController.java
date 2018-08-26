@@ -1,6 +1,11 @@
 package Controllers;
+import db.DBCustomer;
+import db.DBFarm;
 import db.DBHelper;
+import db.DBShop;
+import models.Customer;
 import models.Farm;
+import models.Product;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -23,18 +28,33 @@ public class ShopController {
     private void setupEndpoints() {
 
 
-
-//index
-        post("/shop", (req, res) -> {
+        get("/shop", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            int customerId = Integer.parseInt( req.queryParams("customerSignIn"));
-            model.put("customerId", customerId);
-            model.put("template", "templates/shop/index.vtl");
+            model.put("template", "templates/shop/shop_error.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
 
 
+
+        post("/shop", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int customerId = Integer.parseInt( req.queryParams("customerSignIn"));
+            Customer customer = DBHelper.find(customerId, Customer.class);
+            model.put("customer", customer);
+            List<Product> allProducts = DBShop.allProductsForShop();
+            model.put("allProducts", allProducts);
+            model.put("template", "templates/shop/index.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+        post("/confirmation", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            model.put("template", "templates/shop/confirmation.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 
     }
 

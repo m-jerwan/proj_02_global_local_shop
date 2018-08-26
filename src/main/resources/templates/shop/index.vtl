@@ -1,1 +1,44 @@
-<p>Welcome Customer_1</p>
+<div class="welcome">
+    <p>Welcome $customer.getCustomerName()</p>
+</div>
+
+
+<div class="shopImage">
+    <p>Ricardo in all his farmer glory</p>
+    <p>Welcome to our shop</p>
+</div>
+
+
+<div class="mainshop">
+    <form action="/confirmation" method="post">
+        <table>
+            <tr>
+                <th> Name</th>
+                <th> Weight</th>
+                <th> GroupType</th>
+                <th> Category (Tag)</th>
+                <th> Buy</th>
+            </tr>
+
+            #foreach ($product in $allProducts)
+            <tr>
+                <td>$product.getProductName()</td>
+                <td>$product.getWeight()</td>
+                <td>$product.getGroupType()</td>
+                <td>$product.getTag()</td>
+
+                <td>
+                    <input type="checkbox" id="$product.getId()" value="$product.getId()" name="buy">
+                </td>
+            </tr>
+            #end
+
+
+        </table>
+
+        <input type="submit" value="Order" class="btn">
+
+    </form>
+
+
+</div>
