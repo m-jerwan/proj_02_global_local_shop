@@ -1,7 +1,9 @@
 package Controllers;
 
 import db.DBBasket;
+import db.DBCustomer;
 import db.DBHelper;
+import db.DBProduct;
 import models.Basket;
 import models.Customer;
 import models.Product;
@@ -71,7 +73,7 @@ public class CustomersController {
         get("/customers/:id", (req, res) -> {
             Customer customer = DBHelper.find(Integer.parseInt(req.params(":id")), Customer.class);
             Map<String, Object> model = new HashMap<>();
-
+            List<Basket> basketList = DBCustomer.allBaskets(customer);
 
                  List<List> historyOfPurchases = new ArrayList<>();
 
@@ -79,7 +81,7 @@ public class CustomersController {
 
 
 
-
+            model.put("basketList", basketList);
             model.put("customer", customer);
             model.put("template", "templates/customers/show.vtl");
             return new ModelAndView(model,"templates/layout.vtl" );

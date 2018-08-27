@@ -92,11 +92,21 @@ public class Customer {
         this.baskets.remove(basket);
     }
 
-//    public double emissionOfCustomersBasket(Basket basket){
-//        return basket.emissionsOfProductsInBasket();
+    public double emissionOfCustomersBaskets(){
+        double footprintOfCustomer = 0;
+        for (Basket basket : baskets){
+            footprintOfCustomer += basket.emissionsOfProductsInBasket();
+        }
+        return footprintOfCustomer;
+    }
+//
+//    public double emissionsOfProductsInBasket(){
+//        double totalEmissions =0;
+//        for (Product product : productsInBasket){
+//            totalEmissions += product.emissionsOfProduct();
+//        }
+//        return totalEmissions;
 //    }
-//
-//
 //
     public Basket giveMeLastBasket(){
         int numberAllBaskets = this.getBaskets().size();
