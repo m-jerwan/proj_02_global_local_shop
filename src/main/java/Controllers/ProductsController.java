@@ -108,7 +108,7 @@ public class ProductsController {
             GroupType groupType = GroupType.valueOf(groupString);
             String tagString = req.queryParams("tag").toString();
             TagType tag = TagType.valueOf(tagString);
-            Product product = new Product(productName, groupType, tag, productWeight, farm, shop);
+            Product product = new Product(productName, groupType, tag, productWeight, farm, shop, 1.30);
             DBHelper.save(product);
             res.redirect("/products");
             return null;

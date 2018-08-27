@@ -25,7 +25,7 @@ public class ShopTest {
         shop = new Shop("New shop");
         customer_1 = new Customer("Ricardo", "Edinburgh", shop);
         basket_1 = new Basket(customer_1);
-        product_1 = new Product("potatoes", TUBERS, ORGANIC, 0.5, farm1, shop);
+        product_1 = new Product("potatoes", TUBERS, ORGANIC, 0.5, farm1, shop, 2.0);
 //        product_1.setBasket(basket_1);
     }
 

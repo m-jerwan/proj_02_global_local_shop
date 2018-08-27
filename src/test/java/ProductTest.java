@@ -25,7 +25,7 @@ public class ProductTest {
         Shop shop = new Shop("new shop");
 
 
-        product_1 = new Product("potatoes", TUBERS, ORGANIC,0.5, farm1, shop );
+        product_1 = new Product("potatoes", TUBERS, ORGANIC,0.5, farm1, shop, 2.4 );
     }
 
     @Test

@@ -19,8 +19,8 @@ public class CustomerTest {
     public void before(){
         Shop shop = new Shop("new shop");
         farm1 = new Farm("Animal Farms", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
-        product_1 = new Product("potatoes", TUBERS, ORGANIC,0.5, farm1, shop );
-        product_2 = new Product("strawberries", FRUITS, ORGANIC,1.5, farm1, shop );
+        product_1 = new Product("potatoes", TUBERS, ORGANIC,0.5, farm1, shop, 2.3 );
+        product_2 = new Product("strawberries", FRUITS, ORGANIC,1.5, farm1, shop, 3.7);
 
         customer_1 = new Customer("Ricardo", "Edinburgh", shop);
         basket1 = new Basket(customer_1);
