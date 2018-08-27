@@ -10,6 +10,7 @@
 
 
 <div class="mainshop">
+
     <form action="/confirmation" method="post">
         <table>
             <tr>
@@ -28,7 +29,7 @@
                 <td>$product.getTag()</td>
 
                 <td>
-                    <input type="checkbox" id="$product.getId()" value="$product.getId()" name="buy">
+                    <input type="checkbox" id="$product.getId()" value="$product.getId()" name="prod_$product.getId()">
                 </td>
             </tr>
             #end

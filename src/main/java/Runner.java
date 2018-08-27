@@ -57,10 +57,10 @@ public class Runner {
 
 
 
-        Basket basket = customer_1.giveMeLastBasket();
-
-        customer_1 = DBHelper.find(customer_1.getId(), Customer.class);
-        List<Product> products = DBHelper.getAll(Product.class);
+//        Basket basket = customer_1.giveMeLastBasket();
+//
+//        customer_1 = DBHelper.find(customer_1.getId(), Customer.class);
+//        List<Product> products = DBHelper.getAll(Product.class);
 
 //        customer_1.giveMeLastBasket().addToBasket(product_1);
 
@@ -92,7 +92,7 @@ public class Runner {
 
 //        customer_1.addBasket(basket_2);
 
-
+            Customer customerTest = DBHelper.find(1, Customer.class);
 
     }
 }

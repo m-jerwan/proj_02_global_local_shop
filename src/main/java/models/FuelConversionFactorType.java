@@ -27,6 +27,7 @@ public enum FuelConversionFactorType {
         return fuelConversionFactor;
     }
 
+//    TODO: Marcin to fix
     public static List<FuelConversionFactorType> getAllFuelTypes(){
         List<FuelConversionFactorType> fuelConversionFactorTypes = new ArrayList<>();
         fuelConversionFactorTypes.add(PETROL);

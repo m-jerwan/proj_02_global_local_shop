@@ -11,7 +11,9 @@ public class Basket {
     private List<Product> productsInBasket;
     private Customer customer;
 
-    public Basket(){}
+    public Basket(){
+        this.productsInBasket = new ArrayList<Product>();
+    }
 
     public Basket(Customer customer) {
         this.productsInBasket = new ArrayList<Product>();
@@ -52,7 +54,9 @@ public class Basket {
 //    }
 
     public void addToBasket(Product product){
-        this.productsInBasket.add(product);
+        if (this.productsInBasket != null) {
+            this.productsInBasket.add(product);
+        }
     }
 
     public void removeFromBasket(Product product){
