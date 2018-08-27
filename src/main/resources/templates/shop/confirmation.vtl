@@ -9,11 +9,21 @@
     <p>Basket total: £$basketTotal</p>
 
 </div>
+<div class="used_tags">
+
+    <h3>Products you've bought are:</h3>
+    #foreach($entry in $tagsFromOrder)
+        <p>$entry.getDescription()</p>
+    #end
+
+</div>
+
+
 <div class="usedFarms">
     <h3>Farms:</h3>
 
-    #foreach ($entry in $customer.giveMeLastBasket().getProductsInBasket())
-        <p>$entry.getFarm().getFarmName()</p>
+    #foreach ($entry in $farmsFromOrder)
+        <p>$entry.getFarmName()</p>
     #end
 
 

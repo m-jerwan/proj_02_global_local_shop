@@ -67,27 +67,45 @@ public class ShopController {
                 }
             }
 
-                    //iterating through tempArrayOfIDs to extract products and add them to last basket/ add price to calc total
+                    //iterating through tempArrayOfIDs to extract products and add them to last basket/ add price to calc total/get tags/get Farms
 
             Double basketTotal = 0.00;
+            List<TagType> tagsFromOrder = new ArrayList<>();  //TODO WHAT IF ITS EMPTY????
+//            List<Farm> farmsFromOrder = new ArrayList<>();
+
+            HashMap<Integer, Farm> farmsFromOrder = new HashMap<>();
+
+
             for (Integer entry: tempArrayOfIDs) {
                 Product orderedProduct = DBHelper.find(entry, Product.class);
                 customer_1.giveMeLastBasket().addToBasket(orderedProduct);
                 basketTotal += orderedProduct.getPrice();
+
+                if (!tagsFromOrder.contains(orderedProduct.getTag())) {
+                    tagsFromOrder.add(orderedProduct.getTag());
+                }
+
+                farmsFromOrder.put(orderedProduct.getFarm().getId(), orderedProduct.getFarm());
+            }
+
+            ArrayList<Farm> farmsFromOrderForVtl = new ArrayList<>();
+            for ( Farm farm : farmsFromOrder.values()) {
+                farmsFromOrderForVtl.add(farm);
             }
 
 
 //            TODO: get all checked items/ create an array to store them, pass them into confirmation page
 
-
-            model.put("basketTotal", basketTotal);
             model.put("customer", customer_1);
-
+            model.put("basketTotal", basketTotal);
+            model.put("tagsFromOrder", tagsFromOrder);
+            model.put("farmsFromOrder", farmsFromOrder);
 //            TODO: write querry to get unique farms from THIS customers basket
 
             model.put("template", "templates/shop/confirmation.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
 
     }
 
