@@ -146,7 +146,7 @@ public class Product {
     }
 
     public double emissionsOfConventionalProduct(){
-        return (getGroupType().getTravelDistance() * getGroupType().getFoodConversionFactor())/100;
+        return (getGroupType().getTravelDistance() * FuelConversionFactorType.PETROL.getFuelConversionFactor() )/100;
     }
 
     public double differenceOfEmissions(){
@@ -154,15 +154,30 @@ public class Product {
     }
 
 
+    public double productEmissionsPlastic(){
+        return (ConversionFactorPlastic.PET1.getConversionFactor() * 1 * this.getWeight())/100;
+    }
+
+
+
+
+//    public double distance betweenaddresses(){
+//    totalMilageBasket = 0() {
+//
+//        }
+//
+//    }
+//
+//    totalMilageBasket += Distance.distanceBetween(customer_1.getCustomerAddress(), orderedProduct.getFarm().getAddress());
+//                farmsFromOrder.put(orderedProduct.getFarm().getId(), orderedProduct.getFarm());
+
+
+
+
 //    public double emissionsOfFoodMilesTravelled(String point1, String point2){
 //        int distanceTravelled = Distance.distanceBetween(point1, point2);
 //        return (getFarm().getFuelConversionFactorType().getFuelConversionFactor() * distanceTravelled)/1000;
 //    }
-//    //    TODO: Patrycja to fix:
-//    public double totalEmissions(String point1, String point2){
-//        return emissionsOfProduct() + emissionsOfFoodMilesTravelled(point1, point2);
-//    }
-
 
 
 

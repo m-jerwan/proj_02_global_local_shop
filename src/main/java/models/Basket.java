@@ -95,4 +95,13 @@ public class Basket {
         return totalEmissionsSaved;
     }
 
+    public double emissionsOfPlasticPackaging() {
+        double totalEmissionsSavedFromPlastic = 0;
+        for (Product product : productsInBasket){
+            totalEmissionsSavedFromPlastic += product.productEmissionsPlastic();
+        }
+        return totalEmissionsSavedFromPlastic;
+    }
+
+
 }

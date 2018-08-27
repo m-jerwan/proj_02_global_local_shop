@@ -33,6 +33,7 @@
 <div class="environmental_impact_purchase">
      <p> $customer.giveMeLastBasket().emissionsOfProductsInBasket() kgCO2e </p>
 </div>
+
     <h3> Your product travelled:  </h3>
 <div class="environmental_impact_travel">
 
@@ -42,6 +43,8 @@
 
     <p> Your product travelled $totalMilageBasket mi  </p>
 
-    <p>This is $X less than from the conventional market</p>
+    <p>This is $totalMilageBasket less than from the conventional market</p>
+
+    <p> And you saved so much $customer.giveMeLastBasket().emissionsOfPlasticPackaging() kgCO2e by not using standard supermarket packaging. </p>
 
 </div>
