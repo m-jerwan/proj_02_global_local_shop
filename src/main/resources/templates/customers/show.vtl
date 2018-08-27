@@ -1,23 +1,36 @@
 <p class="page_header">Customer details</p>
 
-<table>
-<tr>
-    <th> Name</th>
-    <th> Address </th>
+<section class="customer_table">
+    <table>
+        <tr>
+            <th> Name</th>
+            <th> Address</th>
+            <th> Actions</th>
+        </tr>
+        <tr>
+            <td>$customer.getCustomerName()</td>
+            <td>$customer.getCustomerAddress()</td>
+            <td>
+                <form action="/customers/$customer.getId()/delete" method="post">
+                    <input type="submit" value="Delete" class="button center">
+                </form>
+            </td>
+            <td>
+                <form action="/customers/$customer.getId()/edit" method="get">
+                    <input type="submit" value="Edit" class="button center">
+                </form>
+            </td>
+        </tr>
+    </table>
+</section>
 
-</tr>
-<tr>
-    <td>$customer.getCustomerName()</td>
-    <td>$customer.getCustomerAddress()</td>
-</tr>
-</table>
+<section class="environmental_inpact_info_summary">
+    <p>summary of all environmental impact here</p>
 
 
-<a href="/customers/$customer.getId()/edit" class="button center">Edit</a>
+</section>
 
-<form action="/customers/$customer.getId()/delete" method="post">
-    <input type="submit" value="Delete" class="button center">
-</form>
+<section class="historical_baskets_here">
+    <p>all baskets here[excluding latest one?]</p>
 
-
-<a href="/customers" class="button center">Back to list</a>
+</section>

@@ -11,8 +11,7 @@
     <input class="inputbox" type="text" name="customerAddress" required="true" id="customerAddress" value="$customer.getCustomerAddress()">
 
 
-    <label for="shop"> Shop </label>
-    <select id="shop" name="shop">
+    <select  hidden id="shop" name="shop">
 
         #foreach ($shop in $shops)
         #if ($shop.getId() == $customer.getShop().getId())
