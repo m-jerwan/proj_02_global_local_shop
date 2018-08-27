@@ -5,11 +5,11 @@ import java.util.List;
 
 public enum FuelConversionFactorType {
 
-    PETROL ("petrol", 2.45),
-    DIESEL ("diesel", 2.45),
-    BIODIESEL ("biodiesel", 2.45),
-    HYBRID ("hybrid", 2.45),
-    ELECTRIC("electric", 2.45);
+    PETROL ("Petrol", 2.45),
+    DIESEL ("Diesel", 2.45),
+    BIODIESEL ("Biodiesel", 2.45),
+    HYBRID ("Hybrid", 2.45),
+    ELECTRIC("Electric", 2.45);
 
     private String description;
     private double fuelConversionFactor;
