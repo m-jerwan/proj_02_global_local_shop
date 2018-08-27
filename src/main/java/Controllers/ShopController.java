@@ -67,19 +67,20 @@ public class ShopController {
                 }
             }
 
-                    //iterating through tempArrayOfIDs to extract products and add them to last basket
+                    //iterating through tempArrayOfIDs to extract products and add them to last basket/ add price to calc total
 
+            Double basketTotal = 0.00;
             for (Integer entry: tempArrayOfIDs) {
                 Product orderedProduct = DBHelper.find(entry, Product.class);
-
                 customer_1.giveMeLastBasket().addToBasket(orderedProduct);
+                basketTotal += orderedProduct.getPrice();
             }
 
 
 //            TODO: get all checked items/ create an array to store them, pass them into confirmation page
 
 
-
+            model.put("basketTotal", basketTotal);
             model.put("customer", customer_1);
 
 //            TODO: write querry to get unique farms from THIS customers basket
