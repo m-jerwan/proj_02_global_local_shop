@@ -19,24 +19,38 @@ public class DBCustomer {
     public static List<Basket> allBaskets(Customer customer) {
         session = HibernateUtil.getSessionFactory().openSession();
         List<Basket> results = null;
-        try{
+        try {
             Criteria cr = session.createCriteria(Basket.class);
             cr.add(Restrictions.eq("customer.id", customer.getId()));
-            results =  cr.list();
+            results = cr.list();
 
-        }catch(HibernateException ex){
+        } catch (HibernateException ex) {
             ex.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
         return results;
     }
 
-    public static Customer findCustomer(int id) {
-        session = HibernateUtil.getSessionFactory().openSession();
-        Criteria cr = session.createCriteria(Customer.class);
-        cr.add(Restrictions.eq("id", id));
-        return getUnique(cr);
-    }
+    // TODO TRY CATCH
+//    public static Customer findCustomer(int id) {
+//        session = HibernateUtil.getSessionFactory().openSession();
+//        Criteria cr = session.createCriteria(Customer.class);
+//        cr.add(Restrictions.eq("id", id));
+//        result = getUnique(cr);
+//    } catch (HibernateException ex) {
+//        ex.printStackTrace();
+//    } finally {
+//        session.close();
+//    }
+//     return result;
+//}
+
+//    public static List<Product> giveMeAllProductsOfCustomer(Customer customer){
+//
+//        //give me all products from this customer all baskets
+//
+//    }
+
 
 }

@@ -55,8 +55,8 @@ public class ShopController {
             List<Basket> tempBasketList = DBCustomer.allBaskets(customer_1);
             customer_1.setBaskets(tempBasketList);
 
-            Basket emptyBasket = new Basket(customer_1);
-            customer_1.addBasket(emptyBasket);
+            Basket tempBasket = new Basket(customer_1);
+            customer_1.addBasket(tempBasket);
 
             List<Integer> tempArrayOfIDs = new ArrayList<>();        //iterating through querry params to extract ids of checked products
             for (String entry: req.queryParams()
@@ -67,11 +67,11 @@ public class ShopController {
                 }
             }
 
+
                     //iterating through tempArrayOfIDs to extract products and add them to last basket/ add price to calc total/get tags/get Farms
 
             Double basketTotal = 0.00;
             List<TagType> tagsFromOrder = new ArrayList<>();  //TODO WHAT IF ITS EMPTY????
-//            List<Farm> farmsFromOrder = new ArrayList<>();
 
             HashMap<Integer, Farm> farmsFromOrder = new HashMap<>();
 
@@ -102,10 +102,14 @@ public class ShopController {
             model.put("farmsFromOrder", farmsFromOrder);
 //            TODO: write querry to get unique farms from THIS customers basket
 
+
+                                                   //iterating through tempArrayOfIDs to extract products and add them to last basket
+
+            model.put("customer", customer_1);
+
             model.put("template", "templates/shop/confirmation.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
-
 
     }
 

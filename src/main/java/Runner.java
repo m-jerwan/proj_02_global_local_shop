@@ -90,9 +90,6 @@ public class Runner {
 //        int tesDistances2 =  Distance.distanceBetween("eh3","eh15");
 //        int tesDistances3 =  Distance.distanceBetween("eh14","eh15");
 
-//        customer_1.addBasket(basket_2);
-
-            Customer customerTest = DBHelper.find(1, Customer.class);
 
     }
 }
