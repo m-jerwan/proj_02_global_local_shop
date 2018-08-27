@@ -37,10 +37,10 @@ public class Seeds {
         DBHelper.save(basket_2);
         DBHelper.save(basket_3);
 
-        Product product_1 = new Product("Mary Rose potatoes", GroupType.TUBERS, TagType.ORGANIC,1, farm_1, shop);
-        Product product_2 = new Product("Jones potatoes ", GroupType.TUBERS, TagType.ORGANIC,1.5, farm_2, shop);
-        Product product_3 = new Product("strawberries", GroupType.FRUITS, TagType.ORGANIC,.3, farm_2, shop);
-        Product product_4 = new Product("chicken", GroupType.MEAT, TagType.ORGANIC,.5, farm_3, shop);
+        Product product_1 = new Product("Mary Rose potatoes", GroupType.TUBERS, TagType.ORGANIC,1, farm_1, shop, 2.4);
+        Product product_2 = new Product("Jones potatoes ", GroupType.TUBERS, TagType.ORGANIC,1.5, farm_2, shop, 2.0);
+        Product product_3 = new Product("strawberries", GroupType.FRUITS, TagType.ORGANIC,.3, farm_2, shop, 3.0);
+        Product product_4 = new Product("chicken", GroupType.MEAT, TagType.ORGANIC,.5, farm_3, shop, 3.50);
         DBHelper.save(product_1);
         DBHelper.save(product_2);
         DBHelper.save(product_3);

@@ -21,8 +21,8 @@ public class BasketTest {
         customer_1 = new Customer("Ricardo", "Edinburgh", shop);
         basket_1 = new Basket(customer_1);
         farm1 = new Farm("Animal Farms", "McDonnald", "FarmRoad 7", FuelConversionFactorType.ELECTRIC);
-        product = new Product("potatoes", TUBERS, ORGANIC,0.5, farm1, shop );
-        product2 = new Product("strawberries", FRUITS, ORGANIC,1.5, farm1, shop );
+        product = new Product("potatoes", TUBERS, ORGANIC,0.5, farm1, shop,2.4 );
+        product2 = new Product("strawberries", FRUITS, ORGANIC,1.5, farm1, shop, 3.5 );
 
 
     }

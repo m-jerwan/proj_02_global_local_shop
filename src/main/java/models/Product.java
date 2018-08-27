@@ -15,11 +15,11 @@ public class Product {
     private Farm farm;
     private Shop shop;
     private Basket basket;
-
+    private double price;
 
     public Product(){}
 
-    public Product(String productName, GroupType groupType, TagType tag, double weight, Farm farm, Shop shop) {
+    public Product(String productName, GroupType groupType, TagType tag, double weight, Farm farm, Shop shop, double price) {
         this.productName = productName;
         this.groupType = groupType;
         this.tag = tag;
@@ -27,6 +27,7 @@ public class Product {
         this.farm = farm;
         this.shop = shop;
         this.basket = null; // PRODUCTS START WITH NULL BASKET
+        this.price = price;
     }
 
 //GETTERS & SETTERS
@@ -108,8 +109,16 @@ public class Product {
         this.basket = basket;
     }
 
+    @Column(name = "price")
+    public double getPrice() {
+        return price;
+    }
 
- //OTHER METHODS
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    //OTHER METHODS
 
 
 //    RETURNS EMISSIONS OF ONE PRODUCT BASED ON QUANTITY 1 -- WE NEED TO UPDATE THE QUANTITY

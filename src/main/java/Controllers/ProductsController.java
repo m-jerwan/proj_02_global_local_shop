@@ -68,7 +68,9 @@ public class ProductsController {
         post("/products/:id", (req, res) -> {
             Product product = DBHelper.find(Integer.parseInt(req.params(":id")), Product.class);
             String productName = req.queryParams("productName");
-            Set params = req.queryParams();
+            Set params = req.queryParams(); //TODO what is this?
+
+
             Double productWeight = Double.parseDouble(req.queryParams("productWeight"));
             int shopId = Integer.parseInt(req.queryParams(("shop")));
             Shop shop = DBHelper.find(shopId, Shop.class);
@@ -80,6 +82,8 @@ public class ProductsController {
             GroupType groupType = GroupType.valueOf(groupString);
             String tagString = req.queryParams("tag").toString();
             TagType tag = TagType.valueOf(tagString);
+            double price = Double.parseDouble(req.queryParams("price"));
+
             product.setProductName(productName);
             product.setWeight(productWeight);
             product.setFarm(farm);
@@ -87,6 +91,7 @@ public class ProductsController {
             product.setGroupType(groupType);
             product.setTag(tag);
             product.setShop(shop);
+            product.setPrice(price);
             DBHelper.update(product);
             res.redirect("/products");
             return null;
@@ -98,6 +103,7 @@ public class ProductsController {
         post("/products", (req, res) ->{
             String productName = req.queryParams("productName");
             Double productWeight = Double.parseDouble(req.queryParams("productWeight"));
+            double price = Double.parseDouble(req.queryParams("price"));
             int shopId = Integer.parseInt(req.queryParams(("shop")));
             Shop shop = DBHelper.find(shopId, Shop.class);
             int farmId = Integer.parseInt(req.queryParams(("farm")));
@@ -108,7 +114,7 @@ public class ProductsController {
             GroupType groupType = GroupType.valueOf(groupString);
             String tagString = req.queryParams("tag").toString();
             TagType tag = TagType.valueOf(tagString);
-            Product product = new Product(productName, groupType, tag, productWeight, farm, shop);
+            Product product = new Product(productName, groupType, tag, productWeight, farm, shop, price);
             DBHelper.save(product);
             res.redirect("/products");
             return null;
