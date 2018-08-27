@@ -55,8 +55,8 @@ public class ShopController {
             List<Basket> tempBasketList = DBCustomer.allBaskets(customer_1);
             customer_1.setBaskets(tempBasketList);
 
-            Basket emptyBasket = new Basket(customer_1);
-            customer_1.addBasket(emptyBasket);
+            Basket tempBasket = new Basket(customer_1);
+            customer_1.addBasket(tempBasket);
 
             List<Integer> tempArrayOfIDs = new ArrayList<>();        //iterating through querry params to extract ids of checked products
             for (String entry: req.queryParams()
@@ -66,27 +66,19 @@ public class ShopController {
                     tempArrayOfIDs.add(Integer.parseInt(temp));
                 }
             }
-
-                    //iterating through tempArrayOfIDs to extract products and add them to last basket
-
+                                                   //iterating through tempArrayOfIDs to extract products and add them to last basket
             for (Integer entry: tempArrayOfIDs) {
                 Product orderedProduct = DBHelper.find(entry, Product.class);
-
+                  orderedProduct.setBasket(tempBasket);
+                  DBHelper.save(orderedProduct);
                 customer_1.giveMeLastBasket().addToBasket(orderedProduct);
             }
-
-
-//            TODO: get all checked items/ create an array to store them, pass them into confirmation page
-
-
-
             model.put("customer", customer_1);
-
-//            TODO: write querry to get unique farms from THIS customers basket
-
             model.put("template", "templates/shop/confirmation.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+
 
     }
 

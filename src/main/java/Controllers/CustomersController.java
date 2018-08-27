@@ -1,11 +1,15 @@
 package Controllers;
 
+import db.DBBasket;
 import db.DBHelper;
+import models.Basket;
 import models.Customer;
+import models.Product;
 import models.Shop;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,10 +67,22 @@ public class CustomersController {
             return null;
         }, new VelocityTemplateEngine());
 
-
+//show
         get("/customers/:id", (req, res) -> {
             Customer customer = DBHelper.find(Integer.parseInt(req.params(":id")), Customer.class);
             Map<String, Object> model = new HashMap<>();
+
+
+                 List<List> historyOfPurchases = new ArrayList<>();
+            for (Basket entry : customer.getBaskets() ) {
+                 List<Product> tempListOfProducts = DBBasket.findAllProductsOfThis(entry);
+                 historyOfPurchases.add(tempListOfProducts);
+            }
+            model.put("historyOfPurchases", historyOfPurchases);
+
+
+
+
             model.put("customer", customer);
             model.put("template", "templates/customers/show.vtl");
             return new ModelAndView(model,"templates/layout.vtl" );
