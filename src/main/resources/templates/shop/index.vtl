@@ -18,6 +18,7 @@
                 <th> Weight</th>
                 <th> GroupType</th>
                 <th> Category (Tag)</th>
+                <th> Price</th>
                 <th> Buy</th>
             </tr>
 
@@ -25,20 +26,17 @@
             <tr>
                 <td>$product.getProductName()</td>
                 <td>$product.getWeight()</td>
-                <td>$product.getGroupType()</td>
-                <td>$product.getTag()</td>
+                <td>$product.getGroupType().getDescription()</td>
+                <td>$product.getTag().getDescription()</td>
+                <td>£$product.getPrice()</td>
 
                 <td>
                     <input type="checkbox" id="$product.getId()" value="$product.getId()" name="prod_$product.getId()">
                 </td>
             </tr>
             #end
-
-
         </table>
-
-
-        <input class="inputbox" type="text" name="customerId" value="$customer.getId()" id="farmer_name">
+        <input class="inputbox" type="text" hidden name="customerId" value="$customer.getId()" id="farmer_name">
         <input type="submit" value="Order" class="btn">
 
     </form>
