@@ -47,20 +47,20 @@ public class CustomerTest {
         assertEquals("Glasgow", customer_1.getCustomerAddress());
     }
 
-    @Test
-    public void getFootprintOfCustomer(){
-        customer_1.addBasket(basket1);
-        basket1.addToBasket(product_1);
-        assertEquals(0.0022835, customer_1.emissionOfCustomersBasket(basket1),0);
-    }
-
-    @Test
-    public void getFootprintOfCustomerManyProducts(){
-        basket1.addToBasket(product_1);
-        basket1.addToBasket(product_2);
-        customer_1.addBasket(basket1);
-        assertEquals(0.009134, customer_1.emissionOfCustomersBasket(basket1),0);
-    }
+//    @Test
+//    public void getFootprintOfCustomer(){
+//        customer_1.addBasket(basket1);
+//        basket1.addToBasket(product_1);
+//        assertEquals(0.0022835, customer_1.emissionOfCustomersBasket(basket1),0);
+//    }
+//
+//    @Test
+//    public void getFootprintOfCustomerManyProducts(){
+//        basket1.addToBasket(product_1);
+//        basket1.addToBasket(product_2);
+//        customer_1.addBasket(basket1);
+//        assertEquals(0.009134, customer_1.emissionOfCustomersBasket(basket1),0);
+//    }
 
 //    @Test
 //    public void canSetEnvInfo(){

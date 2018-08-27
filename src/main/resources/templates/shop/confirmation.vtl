@@ -29,7 +29,19 @@
 
 </div>
 
-    <h3> Emissions of product in basket </h3>
+    <h3> The emissions of your basket </h3>
 <div class="environmental_impact_purchase">
-    <p> $customer.giveMeLastBasket().emissionsOfProductsInBasket() kgCO2e </p>
+     <p> $customer.giveMeLastBasket().emissionsOfProductsInBasket() kgCO2e </p>
+</div>
+    <h3> Your product travelled:  </h3>
+<div class="environmental_impact_travel">
+
+    <p> $customer.giveMeLastBasket().foodMilesEmissionsOfProductsInBasket() kgCO2e</p>
+
+    <p>By doing that you saved $customer.giveMeLastBasket().emissionsSavedFromConventional() tonnes CO2e</p>
+
+    <p> Your product travelled $totalMilageBasket mi  </p>
+
+    <p>This is $X less than from the conventional market</p>
+
 </div>

@@ -123,19 +123,18 @@ public class Product {
 
 //    RETURNS EMISSIONS OF ONE PRODUCT BASED ON QUANTITY 1 -- WE NEED TO UPDATE THE QUANTITY
 
+
     public double emissionsOfProduct(){
-        return (getGroupType().getFoodConversionFactor() * 1 * this.getWeight())/1000;
+        return (getGroupType().getFoodConversionFactor() * 1 * getWeight())/1000;
     }
 
-//
-
-    public double emissionsOfProductKG(){
-        return (getGroupType().getFoodConversionFactor() * 1 * this.getWeight());
+    public double emissionsOfProductKG(Product product){
+        return (product.getGroupType().getFoodConversionFactor() * 1 * product.getWeight());
     }
 
-//    RETURNS EMISSIONS OF ONE PRODUCT BASED OF DISTANCE 1 -- WE NEED TO UPDATE THE DISTANCE
-
-
+    public double emissionsOfFoodMilesTravelled(int distance){
+        return (getFarm().getFuelConversionFactorType().getFuelConversionFactor() * distance)/1000;
+    }
 
 
     public double emissionsOfFoodMilesTravelled(){
@@ -146,6 +145,13 @@ public class Product {
         return emissionsOfProduct() + emissionsOfFoodMilesTravelled();
     }
 
+    public double emissionsOfConventionalProduct(){
+        return (getGroupType().getTravelDistance() * getGroupType().getFoodConversionFactor())/100;
+    }
+
+    public double differenceOfEmissions(){
+        return emissionsOfConventionalProduct() - emissionsOfFoodMilesTravelled();
+    }
 
 
 //    public double emissionsOfFoodMilesTravelled(String point1, String point2){

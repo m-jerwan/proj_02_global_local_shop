@@ -92,12 +92,12 @@ public class Customer {
         this.baskets.remove(basket);
     }
 
-    public double emissionOfCustomersBasket(Basket basket){
-        return basket.emissionsOfProductsInBasket();
-    }
-
-
-
+//    public double emissionOfCustomersBasket(Basket basket){
+//        return basket.emissionsOfProductsInBasket();
+//    }
+//
+//
+//
     public Basket giveMeLastBasket(){
         int numberAllBaskets = this.getBaskets().size();
         return this.getBaskets().get(numberAllBaskets-1);

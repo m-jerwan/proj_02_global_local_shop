@@ -63,7 +63,6 @@ public class Basket {
         this.productsInBasket.remove(product);
     }
 
-
     public double emissionsOfProductsInBasket(){
         double totalEmissions =0;
         for (Product product : productsInBasket){
@@ -88,5 +87,12 @@ public class Basket {
         return totalCombinedEmissions;
     }
 
+    public double emissionsSavedFromConventional(){
+        double totalEmissionsSaved = 0;
+        for (Product product : productsInBasket){
+            totalEmissionsSaved += product.differenceOfEmissions();
+        }
+        return totalEmissionsSaved;
+    }
 
 }

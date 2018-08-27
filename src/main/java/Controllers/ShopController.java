@@ -68,10 +68,11 @@ public class ShopController {
             }
 
 
-                    //iterating through tempArrayOfIDs to extract products and add them to last basket/ add price to calc total/get tags/get Farms
+                    //iterating through tempArrayOfIDs to extract products and add them to last basket/ add price to calc total/get tags/get Farms/get farm addresses
 
             Double basketTotal = 0.00;
             List<TagType> tagsFromOrder = new ArrayList<>();  //TODO WHAT IF ITS EMPTY????
+            Double totalMilageBasket = 0.00;
 
             HashMap<Integer, Farm> farmsFromOrder = new HashMap<>();
 
@@ -84,7 +85,7 @@ public class ShopController {
                 if (!tagsFromOrder.contains(orderedProduct.getTag())) {
                     tagsFromOrder.add(orderedProduct.getTag());
                 }
-
+                totalMilageBasket += Distance.distanceBetween(customer_1.getCustomerAddress(), orderedProduct.getFarm().getAddress());
                 farmsFromOrder.put(orderedProduct.getFarm().getId(), orderedProduct.getFarm());
             }
 
@@ -94,8 +95,10 @@ public class ShopController {
             }
 
 
-//            TODO: get all checked items/ create an array to store them, pass them into confirmation page
 
+
+//            TODO: get all checked items/ create an array to store them, pass them into confirmation page
+            model.put("totalMilageBasket", totalMilageBasket);
             model.put("customer", customer_1);
             model.put("basketTotal", basketTotal);
             model.put("tagsFromOrder", tagsFromOrder);
