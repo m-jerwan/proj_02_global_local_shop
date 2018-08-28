@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,6 +103,14 @@ public class Basket {
         }
         return totalEmissionsSavedFromPlastic;
     }
+
+
+    public void addAllProductsOrderedToBasket( ArrayList<Product> productsOrdered){
+        for (Product productOrdered: productsOrdered) {
+            addToBasket(productOrdered);
+        }
+    }
+
 
 
 }

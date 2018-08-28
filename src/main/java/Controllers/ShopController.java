@@ -50,17 +50,17 @@ public class ShopController {
 
 
         post("/confirmation", (req, res) -> {
+//set:
             Map<String, Object> model = new HashMap<>();
             int customerId = Integer.parseInt( req.queryParams("customerId"));
             Customer customer_1 = DBHelper.find(customerId, Customer.class);
+            Basket currentBasket = new Basket(customer_1);
+//
             List<Basket> tempBasketList = DBCustomer.allBaskets(customer_1);
-            customer_1.setBaskets(tempBasketList);
-
-            Basket tempBasket = new Basket(customer_1);
-
-            customer_1.addBasket(tempBasket);
-
             ArrayList<Product> productsOrdered = ProductFactory.makeProductsFromParams( req.queryParams());
+            currentBasket.addAllProductsOrderedToBasket(productsOrdered);
+            tempBasketList.add(currentBasket);
+            customer_1.setBaskets(tempBasketList);
 
 
                     //iterating through tempArrayOfIDs to extract products and add them to last basket/ add price to calc total/get tags/get Farms/get farm addresses
@@ -72,31 +72,24 @@ public class ShopController {
             ArrayList< Farm> farmsFromOrder = new ArrayList<>();
 
 
-            for (Product productOrdered: productsOrdered) {
-                customer_1.giveMeLastBasket().addToBasket(productOrdered);
-                basketTotal += productOrdered.getPrice();
-
-                if (!tagsFromOrder.contains(productOrdered.getTag())) {
-                    tagsFromOrder.add(productOrdered.getTag());
-                }
-
-                totalMilageBasket += Distance.distanceBetween(customer_1, productOrdered);
-                farmsFromOrder.add( productOrdered.getFarm());
-            }
+//            for (Product productOrdered: productsOrdered) {
+//                customer_1.giveMeLastBasket().addToBasket(productOrdered);
+//                basketTotal += productOrdered.getPrice();
+//
+//                if (!tagsFromOrder.contains(productOrdered.getTag())) {
+//                    tagsFromOrder.add(productOrdered.getTag());
+//                }
+//
+//                totalMilageBasket += Distance.distanceBetween(customer_1, productOrdered);
+//                farmsFromOrder.add( productOrdered.getFarm());
+//            }
 
             ArrayList<Farm> uniqueFarms = Farm.uniqueFarmsOnly(farmsFromOrder);
 
-//            TODO: get all checked items/ create an array to store them, pass them into confirmation page
             model.put("totalMilageBasket", totalMilageBasket);
-            model.put("customer", customer_1);
             model.put("basketTotal", basketTotal);
             model.put("tagsFromOrder", tagsFromOrder);
             model.put("farmsFromOrder", uniqueFarms);
-//            TODO: write querry to get unique farms from THIS customers basket
-
-
-                                                   //iterating through tempArrayOfIDs to extract products and add them to last basket
-
             model.put("customer", customer_1);
 
             model.put("template", "templates/shop/confirmation.vtl");
