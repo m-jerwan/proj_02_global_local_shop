@@ -99,11 +99,5 @@ public class Farm {
         this.products = products;
     }
 
-    static public ArrayList<Farm> uniqueFarmsOnly(ArrayList<Farm> listWithRepeatedValues){
-        HashMap<Integer, Farm> farmIdsAndFarms = new HashMap<>();
-        for ( Farm farm : listWithRepeatedValues ){
-            farmIdsAndFarms.put(farm.getId(), farm );
-        }
-        return new ArrayList<Farm>( farmIdsAndFarms.values());
-    }
+
 }

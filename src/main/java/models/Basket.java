@@ -3,6 +3,7 @@ package models;
 import javax.persistence.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,7 @@ public class Basket {
     private List<Product> productsInBasket;
     private Customer customer;
 
-    public Basket(){
+    public Basket() {
         this.productsInBasket = new ArrayList<Product>();
     }
 
@@ -54,43 +55,43 @@ public class Basket {
 //        this.productsInBasket.add(product);
 //    }
 
-    public void addToBasket(Product product){
+    public void addToBasket(Product product) {
         if (this.productsInBasket != null) {
             this.productsInBasket.add(product);
         }
     }
 
-    public void removeFromBasket(Product product){
+    public void removeFromBasket(Product product) {
         this.productsInBasket.remove(product);
     }
 
-    public double emissionsOfProductsInBasket(){
-        double totalEmissions =0;
-        for (Product product : productsInBasket){
+    public double emissionsOfProductsInBasket() {
+        double totalEmissions = 0;
+        for (Product product : productsInBasket) {
             totalEmissions += product.emissionsOfProduct();
         }
         return totalEmissions;
     }
 
-    public double foodMilesEmissionsOfProductsInBasket(){
-        double totalMilesEmissions =0;
-        for (Product product : productsInBasket){
+    public double foodMilesEmissionsOfProductsInBasket() {
+        double totalMilesEmissions = 0;
+        for (Product product : productsInBasket) {
             totalMilesEmissions += product.emissionsOfFoodMilesTravelled();
         }
         return totalMilesEmissions;
     }
 
-    public double totalEmissionsCombined(){
+    public double totalEmissionsCombined() {
         double totalCombinedEmissions = 0;
-        for (Product product : productsInBasket){
+        for (Product product : productsInBasket) {
             totalCombinedEmissions += product.totalEmissions();
         }
         return totalCombinedEmissions;
     }
 
-    public double emissionsSavedFromConventional(){
+    public double emissionsSavedFromConventional() {
         double totalEmissionsSaved = 0;
-        for (Product product : productsInBasket){
+        for (Product product : productsInBasket) {
             totalEmissionsSaved += product.differenceOfEmissions();
         }
         return totalEmissionsSaved;
@@ -98,19 +99,66 @@ public class Basket {
 
     public double emissionsOfPlasticPackaging() {
         double totalEmissionsSavedFromPlastic = 0;
-        for (Product product : productsInBasket){
+        for (Product product : productsInBasket) {
             totalEmissionsSavedFromPlastic += product.productEmissionsPlastic();
         }
         return totalEmissionsSavedFromPlastic;
     }
 
 
-    public void addAllProductsOrderedToBasket( ArrayList<Product> productsOrdered){
-        for (Product productOrdered: productsOrdered) {
+    public void addAllProductsOrderedToBasket(ArrayList<Product> productsOrdered) {
+        for (Product productOrdered : productsOrdered) {
             addToBasket(productOrdered);
         }
     }
 
+    public Double calculate£TotalForBasket() {
+        Double basketTotal = 0.00;
+        for (Product productOrdered : productsInBasket) {
+            basketTotal += productOrdered.getPrice();
+        }
+        return basketTotal;
+    }
+
+    public void putUniqueTagsFromBasketInto(List<TagType> tagsFromOrder) {
+
+        for (Product productOrdered : productsInBasket) {
+
+            if (!tagsFromOrder.contains(productOrdered.getTag())) {
+                tagsFromOrder.add(productOrdered.getTag());
+            }
+        }
+    }
+
+    public ArrayList<Farm> giveMeUniqueFarmsFromBasket() {
+        HashMap<Integer, Farm> farmIdsAndFarms = new HashMap<>();
+        ArrayList<Farm> listWithRepeatedValues = new ArrayList<>();
+
+        for (Product product : productsInBasket
+        ) {
+            listWithRepeatedValues.add(product.getFarm());
+
+        }
+
+        for (Farm farm : listWithRepeatedValues) {
+            farmIdsAndFarms.put(farm.getId(), farm);
+        }
+        return new ArrayList<Farm>(farmIdsAndFarms.values());
+    }
 
 
+    public Double calculateTotalMileageForBasket() {
+        Double totalMileageBasket = 0.00;
+        for (Product productOrdered : productsInBasket) {
+            int distance = Distance.distanceBetween(customer, productOrdered);
+            totalMileageBasket += distance;
+        }
+        return totalMileageBasket;
+    }
 }
+
+
+
+
+
+
