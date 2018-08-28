@@ -1,4 +1,4 @@
-<p> Test </p>
+<p> Edit your new product </p>
 
 
 <form action="/products" method="post">
@@ -42,7 +42,7 @@
 
 
     <label for="basket" hidden> basket </label>
-    <select id="basket" name="basket" >
+    <select id="basket" name="basket" hidden >
         #foreach  ($basket in $baskets)
         <option value="$basket.getId()"> $basket</option>
         #end

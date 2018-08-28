@@ -2,20 +2,20 @@ package models;
 
 public enum GroupType {
 
-    PULSES("Pulses/beans", 1, 45),
-    DAIRY("Dairy", 1, 45),
-    FRUITS("Fruits/Berries", 4.567, 45),
-    GRAINS("Grains", 1, 45),
-    HERBS("Herbs", 1, 45),
-    MEAT("Meats/Pultry", 4.567, 45),
-    MISC("Miscellaneous", 1, 45),
-    NUTS("Nuts/seeds", 1, 45),
-    OILS("Oils", 1, 45),
-    PROCESSED("Processed foods", 1, 45),
+    PULSES("Pulses/beans", 3.45, 4834),
+    DAIRY("Dairy", 5.67, 60),
+    FRUITS("Fruits/Berries", 4.56, 1406),
+    GRAINS("Grains", 2.65, 4834),
+    HERBS("Herbs", 1.45, 60),
+    MEAT("Meats/Poultry", 4.567, 659),
+    MISC("Miscellaneous", 2.56, 1406),
+    NUTS("Nuts/seeds", 5.1, 659),
+    OILS("Oils", 3.45, 1406),
+    PROCESSED("Processed foods", 5.1, 45),
     ROOT("Root crops", 1, 45),
     SEAFOOD("Seafood", 1, 45),
-    TUBERS("Tubers", 4.567, 45),
-    VEGETEABLES("Vegeteables", 1, 45);
+    TUBERS("Tubers", 4.567, 14068),
+    VEGETEABLES("Vegetables", 3.45, 14068);
 
     private String description;
     private double foodConversionFactor;

@@ -29,22 +29,29 @@
 
 </div>
 
-    <h3> The emissions of your basket </h3>
+    <h3> The emissions of products in your basket </h3>
 <div class="environmental_impact_purchase">
      <p> $customer.giveMeLastBasket().emissionsOfProductsInBasket() kgCO2e </p>
 </div>
 
-    <h3> Your product travelled:  </h3>
+
+    <h3> Your product travel summary:</h3>
 <div class="environmental_impact_travel">
 
-    <p> $customer.giveMeLastBasket().foodMilesEmissionsOfProductsInBasket() kgCO2e</p>
+    <p> Your product will travel $totalMileageBasket mi  </p>
 
-    <p>By doing that you saved $customer.giveMeLastBasket().emissionsSavedFromConventional() tonnes CO2e</p>
+    <p> This created $customer.giveMeLastBasket().foodMilesEmissionsOfProductsInBasket() kgCO2e. </p>
 
-    <p> Your product travelled $totalMilageBasket mi  </p>
+    <p> Because you shop locally, you saved $customer.giveMeLastBasket().emissionsSavedFromConventional() tonnes CO2e</p>
 
-    <p>This is $totalMilageBasket less than from the conventional market</p>
+    <p>This is XXX less mi than from the chain supermarket.</p>
 
     <p> And you saved so much $customer.giveMeLastBasket().emissionsOfPlasticPackaging() kgCO2e by not using standard supermarket packaging. </p>
 
 </div>
+
+<h3> Your summary </h3>
+
+<p> Your overall emissions </p>
+<p> Your overall supermarket chain emissions</p>
+<p> Your overall saving </p>
