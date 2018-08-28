@@ -3,6 +3,7 @@ package models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Entity
@@ -69,5 +70,15 @@ public class Shop {
 
     public void addProducts(Product product){
         this.shopProducts.add(product);
+    }
+
+    public static ArrayList<Product> updateArrayToHaveOnlyUniqueProducts(List<Product> notUniqueArrayOfProducts){
+        HashMap tempHashHelper = new HashMap();
+
+        for (Product product : notUniqueArrayOfProducts
+                ) {
+            tempHashHelper.put(product.getProductName(), product );
+        }
+        return new ArrayList<>(tempHashHelper.values());
     }
 }

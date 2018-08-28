@@ -26,8 +26,7 @@
 </select>
 
 
-    <label for="shop"> Shop </label>
-    <select id="shop" name="shop" >
+    <select id="shop" hidden name="shop" >
         #foreach  ($shop in $shops)
         <option value="$shop.getId()">$shop.getShopName()</option>
         #end

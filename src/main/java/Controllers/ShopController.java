@@ -41,8 +41,11 @@ public class ShopController {
             int customerId = Integer.parseInt( req.queryParams("customerId"));
             Customer customer = DBHelper.find(customerId, Customer.class);
             model.put("customer", customer);
+
             List<Product> allProducts = DBShop.allProductsForShop();
+            allProducts =  Shop.updateArrayToHaveOnlyUniqueProducts(allProducts);
             model.put("allProducts", allProducts);
+
             model.put("template", "templates/shop/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());

@@ -9,8 +9,7 @@
     <label for="productWeight"> Weight:</label>
     <input class="inputbox" type="text" name="productWeight" required="true" id="productWeight"value="$product.getWeight()">
 
-    <label for="shop"> Shop </label>
-    <select id="shop" name="shop">
+    <select id="shop" hidden name="shop">
         #foreach ($shop in $shops)
         #if ($shop.getId() == $product.getShop().getId())
     <option value="$shop.getId()" selected> $shop.getShopName() </option>
@@ -33,8 +32,7 @@
         #end
     </select>
 
-    <label for="basket"> Basket </label>
-    <select id="basket" name="basket" >
+    <select id="basket" hidden name="basket" >
         #foreach ($basket in $baskets)
         <option value="$basket.getId()"> $basket </option>
         #end
