@@ -109,13 +109,17 @@ public class ProductsController {
             int farmId = Integer.parseInt(req.queryParams(("farm")));
             Farm farm = DBHelper.find(farmId, Farm.class);
             int basketId = Integer.parseInt(req.queryParams(("basket")));
+            int quantity = Integer.parseInt(req.queryParams("quantity"));
             Basket basket = DBHelper.find(basketId, Basket.class);
             String groupString = req.queryParams("foodGroupType").toString();
             GroupType groupType = GroupType.valueOf(groupString);
             String tagString = req.queryParams("tag").toString();
             TagType tag = TagType.valueOf(tagString);
-            Product product = new Product(productName, groupType, tag, productWeight, farm, shop, price);
-            DBHelper.save(product);
+
+            for (int counter = 0 ; counter <= quantity; counter ++) {
+                Product product = new Product(productName, groupType, tag, productWeight, farm, shop, price);
+                DBHelper.save(product);
+            }
             res.redirect("/products");
             return null;
 

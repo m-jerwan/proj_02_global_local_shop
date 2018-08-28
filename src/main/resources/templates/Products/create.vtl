@@ -8,7 +8,7 @@
     <input class="inputbox" type="text" name="productName" required="true" id="productName">
 
     <label for="productWeight"> Weight:</label>
-    <input class="inputbox" type="text" name="productWeight" required="true" id="productWeight">
+    <input class="inputbox" type="number" name="productWeight" required="true" min="0" step="0.1" id="productWeight">
 
     <label for="Tag"> Tag </label>
     <select id="tag" name="tag" >
@@ -50,6 +50,9 @@
 
     <label for="price"> Price:</label>
     <input class="inputbox" type="number" name="price" required="true" min="0" step="0.01" id="price">
+
+    <label for="quantity"> Quantity:</label>
+    <input class="inputbox" type="number" name="quantity" required="true" min="0" step="1" id="quantity">
 
     <input type="submit" value="Save" class="button">
 

@@ -34,7 +34,7 @@ public class FarmController {
 //new - ENUM UPDATED
         get("/farms/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            model.put("template", "templates/farms/new.vtl");
+            model.put("template", "templates/farms/create.vtl");
             EnumSet<FuelConversionFactorType> fuelType = EnumSet.allOf(FuelConversionFactorType.class);
             model.put("fuelConversionFactorTypes", fuelType);
             return new ModelAndView(model, "templates/layout.vtl");
