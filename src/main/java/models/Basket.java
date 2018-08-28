@@ -1,5 +1,7 @@
 package models;
 
+import db.DBHelper;
+
 import javax.persistence.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -106,11 +108,16 @@ public class Basket {
     }
 
 
+
     public void addAllProductsOrderedToBasket(ArrayList<Product> productsOrdered) {
         for (Product productOrdered : productsOrdered) {
+            productOrdered.setBasket(this);
             addToBasket(productOrdered);
+            DBHelper.update(productOrdered);
         }
     }
+
+
 
     public Double calculate£TotalForBasket() {
         Double basketTotal = 0.00;

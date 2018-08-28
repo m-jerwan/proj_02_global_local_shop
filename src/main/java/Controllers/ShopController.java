@@ -61,7 +61,9 @@ public class ShopController {
             List<Basket> tempBasketList = DBCustomer.allBaskets(customer_1);
 //exec:
             ArrayList<Product> productsOrdered = ProductFactory.makeProductsFromParams( req.queryParams());
+
             currentBasket.addAllProductsOrderedToBasket(productsOrdered);
+
             tempBasketList.add(currentBasket);
             customer_1.setBaskets(tempBasketList);
             basketTotal = currentBasket.calculate£TotalForBasket();
@@ -70,6 +72,7 @@ public class ShopController {
             totalMileageBasket = currentBasket.calculateTotalMileageForBasket();
 
 
+            DBHelper.save(currentBasket);
             model.put("totalMileageBasket", totalMileageBasket);
             model.put("basketTotal", basketTotal);
             model.put("tagsFromOrder", tagsFromOrder);

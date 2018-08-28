@@ -1,5 +1,7 @@
 package models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity
@@ -99,6 +101,7 @@ public class Product {
         this.shop = shop;
     }
 
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "basket_id", nullable = true)
     public Basket getBasket() {
