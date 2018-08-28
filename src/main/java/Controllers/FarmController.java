@@ -2,16 +2,11 @@ package Controllers;
 
 import db.DBFarm;
 import db.DBHelper;
-import models.Farm;
-import models.FuelConversionFactorType;
-import models.Product;
+import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static models.FuelConversionFactorType.DIESEL;
 import static spark.Spark.get;
@@ -36,24 +31,25 @@ public class FarmController {
         }, new VelocityTemplateEngine());
 
 
-//new
+//new - ENUM UPDATED
         get("/farms/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/farms/new.vtl");
-            List<FuelConversionFactorType> fuelConversionFactorTypes = FuelConversionFactorType.getAllFuelTypes();
-            model.put("fuelConversionFactorTypes", fuelConversionFactorTypes);
+            EnumSet<FuelConversionFactorType> fuelType = EnumSet.allOf(FuelConversionFactorType.class);
+            model.put("fuelConversionFactorTypes", fuelType);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-// & create
+// & create - ENUM UPDATED
 
         post("/farms", (req, res) -> {
             String farmName = req.queryParams("farm_name");
             String farmerName = req.queryParams("farmer_name");
             String bio = req.queryParams("bio");
             String address = req.queryParams("address");
-            FuelConversionFactorType fuel = DIESEL;             //todo: change String into Enum
-            Farm newFarm = new Farm(farmName, farmerName, address, fuel);
+            String fuelString = req.queryParams("fuelType").toString();
+            FuelConversionFactorType fuelType = FuelConversionFactorType.valueOf(fuelString);
+            Farm newFarm = new Farm(farmName, farmerName, address, fuelType);
             newFarm.setBio(bio);
             DBHelper.save(newFarm);
             res.redirect("/farms");
@@ -77,11 +73,13 @@ public class FarmController {
             Map<String, Object> model = new HashMap<>();
             Farm farm = DBHelper.find(Integer.parseInt(req.params(":id")), Farm.class);
             model.put("farm", farm);
-            List<FuelConversionFactorType> fuelConversionFactorTypes = FuelConversionFactorType.getAllFuelTypes();
-            model.put("fuelConversionFactorTypes", fuelConversionFactorTypes);
+            EnumSet<FuelConversionFactorType> fuelType = EnumSet.allOf(FuelConversionFactorType.class);
+            model.put("fuelConversionFactorTypes", fuelType);
             model.put("template", "templates/farms/edit.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+
 // & update
         //THIS IS NOT USED YET
         post("/farms/:id", (req, res) -> {
@@ -90,10 +88,13 @@ public class FarmController {
             String farmerName = req.queryParams("farmer_name");
             String bio = req.queryParams("bio");
             String address = req.queryParams("address");
-            FuelConversionFactorType fuel = DIESEL;             //todo: change String into Enum
-            Farm newFarm = new Farm(farmName, farmerName, address, fuel);
+//            String fuelTypeString = req.queryParams("fuelConversionFactorTypes").toString();
+//            FuelConversionFactorType fuelType = FuelConversionFactorType.valueOf(fuelTypeString);
+            FuelConversionFactorType fuelType = DIESEL;             //todo: change String into Enum
+            Farm newFarm = new Farm(farmName, farmerName, address, fuelType);
             newFarm.setBio(bio);
             newFarm.setId(Integer.parseInt(req.params(":id")));
+            newFarm.setFuelConversionFactorType(fuelType);
             DBHelper.update(newFarm);
             res.redirect("/farms/" + req.params(":id"));
             return null;
@@ -106,15 +107,6 @@ public class FarmController {
             res.redirect("/farms");
             return null;
         });
-
-
-
-
-
-
-
-
-
 
     }
 }

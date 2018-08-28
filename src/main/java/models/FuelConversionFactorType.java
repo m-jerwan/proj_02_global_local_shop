@@ -5,11 +5,12 @@ import java.util.List;
 
 public enum FuelConversionFactorType {
 
-    PETROL ("Petrol", 2.45),
-    DIESEL ("Diesel", 2.45),
+    PETROL ("Petrol", 0.45723),
+    DIESEL ("Diesel", 0.34634),
     BIODIESEL ("Biodiesel", 2.45),
-    HYBRID ("Hybrid", 2.45),
-    ELECTRIC("Electric", 2.45);
+    HYBRID ("Hybrid", 0.25964),
+    BATTERYELECTRIC ("BatteryElectric", 0.00),
+    ELECTRIC("Electric", 0.07717);
 
     private String description;
     private double fuelConversionFactor;
@@ -28,14 +29,14 @@ public enum FuelConversionFactorType {
     }
 
 //    TODO: Marcin to fix
-    public static List<FuelConversionFactorType> getAllFuelTypes(){
-        List<FuelConversionFactorType> fuelConversionFactorTypes = new ArrayList<>();
-        fuelConversionFactorTypes.add(PETROL);
-        fuelConversionFactorTypes.add(DIESEL);
-        fuelConversionFactorTypes.add(BIODIESEL);
-        fuelConversionFactorTypes.add(HYBRID);
-        fuelConversionFactorTypes.add(ELECTRIC);
-        return fuelConversionFactorTypes;
-    }
+//    public static List<FuelConversionFactorType> getAllFuelTypes(){
+//        List<FuelConversionFactorType> fuelConversionFactorTypes = new ArrayList<>();
+//        fuelConversionFactorTypes.add(PETROL);
+//        fuelConversionFactorTypes.add(DIESEL);
+//        fuelConversionFactorTypes.add(BIODIESEL);
+//        fuelConversionFactorTypes.add(HYBRID);
+//        fuelConversionFactorTypes.add(ELECTRIC);
+//        return fuelConversionFactorTypes;
+//    }
 
 }
