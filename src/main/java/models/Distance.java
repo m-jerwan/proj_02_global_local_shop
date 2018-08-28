@@ -48,14 +48,29 @@ public class Distance {
         return distances;
     }
 
-    public static Integer distanceBetween(String point1, String point2){
+
+
+    public static Integer distanceBetween(Customer cust, Product prod) {
+        return Distance.distanceBetween(cust.getCustomerAddress(), prod.getFarm().getAddress());
+    }
+
+    public static Integer distanceBetween(String address1, String address2){
 //        takes string, cuts first 2 letters ("eh") and parses into Integer to be used in the grid finder
-        Integer point1Int = Integer.parseInt(point1.substring(2));
-        Integer point2Int = Integer.parseInt(point2.substring(2));
 
         List<int[]> distances = Distance.setUpDistances() ;
-        return distances.get(point1Int-1)[point2Int-1];
+
+        int indexOfAddress1 = indexInArrayForPostcode(address1);
+        int indexOfAddress2 = indexInArrayForPostcode(address2);
+
+        return distances.get(indexOfAddress1)[indexOfAddress2];
+    }
+
+    public static int indexInArrayForPostcode(String postcode) {
+        Integer numberAtTheEndOfAddress = Integer.parseInt(postcode.substring(2));
+        int indexOfAddress1 = numberAtTheEndOfAddress -1;
+        //take postcode begining as number like EH7 should be 7, then subtract 1
+        return indexOfAddress1;
     }
 
 
-}
+    }

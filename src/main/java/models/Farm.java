@@ -5,6 +5,9 @@ package models;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -94,5 +97,13 @@ public class Farm {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    static public ArrayList<Farm> uniqueFarmsOnly(ArrayList<Farm> listWithRepeatedValues){
+        HashMap<Integer, Farm> farmIdsAndFarms = new HashMap<>();
+        for ( Farm farm : listWithRepeatedValues ){
+            farmIdsAndFarms.put(farm.getId(), farm );
+        }
+        return new ArrayList<Farm>( farmIdsAndFarms.values());
     }
 }
