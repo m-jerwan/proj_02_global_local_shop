@@ -4,6 +4,7 @@ import db.DBFarm;
 import db.DBHelper;
 import db.DBShop;
 import models.*;
+import models.factories.ProductFactory;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -56,16 +57,10 @@ public class ShopController {
             customer_1.setBaskets(tempBasketList);
 
             Basket tempBasket = new Basket(customer_1);
+
             customer_1.addBasket(tempBasket);
 
-            List<Integer> tempArrayOfIDs = new ArrayList<>();        //iterating through querry params to extract ids of checked products
-            for (String entry: req.queryParams()
-                 ) {
-                if (entry.contains("prod_")) {
-                    String temp = entry.substring(5);
-                    tempArrayOfIDs.add(Integer.parseInt(temp));
-                }
-            }
+            ArrayList<Product> productsOrdered = ProductFactory.makeProductsFromParams( req.queryParams());
 
 
                     //iterating through tempArrayOfIDs to extract products and add them to last basket/ add price to calc total/get tags/get Farms/get farm addresses
@@ -74,35 +69,29 @@ public class ShopController {
             List<TagType> tagsFromOrder = new ArrayList<>();  //TODO WHAT IF ITS EMPTY????
             Double totalMilageBasket = 0.00;
 
-            HashMap<Integer, Farm> farmsFromOrder = new HashMap<>();
+            ArrayList< Farm> farmsFromOrder = new ArrayList<>();
 
 
-            for (Integer entry: tempArrayOfIDs) {
-                Product orderedProduct = DBHelper.find(entry, Product.class);
-                customer_1.giveMeLastBasket().addToBasket(orderedProduct);
-                basketTotal += orderedProduct.getPrice();
+            for (Product productOrdered: productsOrdered) {
+                customer_1.giveMeLastBasket().addToBasket(productOrdered);
+                basketTotal += productOrdered.getPrice();
 
-                if (!tagsFromOrder.contains(orderedProduct.getTag())) {
-                    tagsFromOrder.add(orderedProduct.getTag());
+                if (!tagsFromOrder.contains(productOrdered.getTag())) {
+                    tagsFromOrder.add(productOrdered.getTag());
                 }
-                totalMilageBasket += Distance.distanceBetween(customer_1.getCustomerAddress(), orderedProduct.getFarm().getAddress());
-                farmsFromOrder.put(orderedProduct.getFarm().getId(), orderedProduct.getFarm());
+
+                totalMilageBasket += Distance.distanceBetween(customer_1, productOrdered);
+                farmsFromOrder.add( productOrdered.getFarm());
             }
 
-            ArrayList<Farm> farmsFromOrderForVtl = new ArrayList<>();
-            for ( Farm farm : farmsFromOrder.values()) {
-                farmsFromOrderForVtl.add(farm);
-            }
-
-
-
+            ArrayList<Farm> uniqueFarms = Farm.uniqueFarmsOnly(farmsFromOrder);
 
 //            TODO: get all checked items/ create an array to store them, pass them into confirmation page
             model.put("totalMilageBasket", totalMilageBasket);
             model.put("customer", customer_1);
             model.put("basketTotal", basketTotal);
             model.put("tagsFromOrder", tagsFromOrder);
-            model.put("farmsFromOrder", farmsFromOrder);
+            model.put("farmsFromOrder", uniqueFarms);
 //            TODO: write querry to get unique farms from THIS customers basket
 
 

@@ -149,6 +149,8 @@ public class Product {
         return (getGroupType().getTravelDistance() * FuelConversionFactorType.PETROL.getFuelConversionFactor() )/100;
     }
 
+//    TODO : Emissions from aviation
+
     public double differenceOfEmissions(){
         return emissionsOfConventionalProduct() - emissionsOfFoodMilesTravelled();
     }
@@ -168,10 +170,9 @@ public class Product {
 //
 //    }
 //
+//Double totalMilageBasket = 0.00;
 //    totalMilageBasket += Distance.distanceBetween(customer_1.getCustomerAddress(), orderedProduct.getFarm().getAddress());
 //                farmsFromOrder.put(orderedProduct.getFarm().getId(), orderedProduct.getFarm());
-
-
 
 
 //    public double emissionsOfFoodMilesTravelled(String point1, String point2){
@@ -180,13 +181,9 @@ public class Product {
 //    }
 
 
-
 //    public double getEmissionsOfWaste(){
 //        return 0.00;
 //    }
-//
-//    public double getTotalFootprintOfProduct(){
-//        return 0.00;
-//    }
+
 
 }
