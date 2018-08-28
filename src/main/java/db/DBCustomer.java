@@ -32,25 +32,5 @@ public class DBCustomer {
         return results;
     }
 
-    // TODO TRY CATCH
-//    public static Customer findCustomer(int id) {
-//        session = HibernateUtil.getSessionFactory().openSession();
-//        Criteria cr = session.createCriteria(Customer.class);
-//        cr.add(Restrictions.eq("id", id));
-//        result = getUnique(cr);
-//    } catch (HibernateException ex) {
-//        ex.printStackTrace();
-//    } finally {
-//        session.close();
-//    }
-//     return result;
-//}
-
-//    public static List<Product> giveMeAllProductsOfCustomer(Customer customer){
-//
-//        //give me all products from this customer all baskets
-//
-//    }
-
 
 }

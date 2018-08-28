@@ -1,7 +1,4 @@
-import db.DBCustomer;
-import db.DBFarm;
-import db.DBHelper;
-import db.DBShop;
+import db.*;
 import models.*;
 
 import java.util.ArrayList;
@@ -55,9 +52,11 @@ public class Runner {
         DBHelper.save(basket_2);
         DBHelper.save(basket_3);
 
+        List<Product> productsInBasket = DBBasket.findAllProductsOfThis(basket_1);
 
+        List<Basket> basketList = DBCustomer.allBaskets(customer_1);
 
-//        Basket basket = customer_1.giveMeLastBasket();
+        Basket basket = customer_1.giveMeLastBasket();
 //
 //        customer_1 = DBHelper.find(customer_1.getId(), Customer.class);
 //        List<Product> products = DBHelper.getAll(Product.class);

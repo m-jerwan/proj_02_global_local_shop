@@ -74,13 +74,8 @@ public class CustomersController {
             Customer customer = DBHelper.find(Integer.parseInt(req.params(":id")), Customer.class);
             Map<String, Object> model = new HashMap<>();
             List<Basket> basketList = DBCustomer.allBaskets(customer);
-
-                 List<List> historyOfPurchases = new ArrayList<>();
-
+            List<List> historyOfPurchases = new ArrayList<>();
             model.put("historyOfPurchases", historyOfPurchases);
-
-
-
             model.put("basketList", basketList);
             model.put("customer", customer);
             model.put("template", "templates/customers/show.vtl");

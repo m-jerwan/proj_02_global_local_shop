@@ -56,32 +56,32 @@ public class BasketTest {
         assertEquals(2,basket_1.getProductsInBasket().size());
     }
 
-//    @Test
-//    public void canCalculateFootprintOfBasket(){
-//        basket_1.addToBasket(product);
-//        basket_1.addToBasket(product2);
-//        assertEquals(0.009134, basket_1.emissionsOfProductsInBasket(),0);
-//    }
-//
-//    @Test
-//    public void canCalculateFootprintOfBasket1product() {
-//        basket_1.addToBasket(product2);
-//        assertEquals(0.006850500000000001, basket_1.emissionsOfProductsInBasket(), 0);
-//    }
-//
-//    @Test
-//    public void canCalculateFoodMilesOfBasket(){
-//        basket_1.addToBasket(product);
-//        basket_1.addToBasket(product2);
-//        assertEquals(0.49000000000000005, basket_1.foodMilesEmissionsOfProductsInBasket(),0);
-//    }
-//
-//    @Test
-//    public void canCalculateFoodMilesOfBasket1product(){
-//        basket_1.addToBasket(product);
-//        assertEquals(0.24500000000000002, basket_1.foodMilesEmissionsOfProductsInBasket(),0);
-//    }
-//
+    @Test
+    public void canCalculateFootprintOfBasket(){
+        basket_1.addToBasket(product);
+        basket_1.addToBasket(product2);
+        assertEquals(0.0091235, basket_1.emissionsOfProductsInBasket(),0);
+    }
+
+    @Test
+    public void canCalculateFootprintOfBasket1product() {
+        basket_1.addToBasket(product2);
+        assertEquals(0.00684, basket_1.emissionsOfProductsInBasket(), 0);
+    }
+
+    @Test
+    public void canCalculateFoodMilesOfBasket(){
+        basket_1.addToBasket(product);
+        basket_1.addToBasket(product2);
+        assertEquals(70.75177020000001, basket_1.foodMilesEmissionsOfProductsInBasket(),0);
+    }
+
+    @Test
+    public void canCalculateFoodMilesOfBasket1product(){
+        basket_1.addToBasket(product);
+        assertEquals(64.3231164, basket_1.foodMilesEmissionsOfProductsInBasket(),0);
+    }
+
 //    @Test
 //    public void canCalculateTotalEmissionsOfBasket1product(){
 //        basket_1.addToBasket(product);
