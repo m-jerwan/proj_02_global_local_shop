@@ -135,13 +135,12 @@ public class Product {
         return (product.getGroupType().getFoodConversionFactor() * 1 * product.getWeight());
     }
 
-    public double emissionsOfFoodMilesTravelled(int distance){
+    public double emissionsOfFoodMilesTravelledNotUsed(int distance){
         return (getFarm().getFuelConversionFactorType().getFuelConversionFactor() * distance)/1000;
     }
 
-
     public double emissionsOfFoodMilesTravelled(){
-        return (getFarm().getFuelConversionFactorType().getFuelConversionFactor() * 100)/1000;
+        return (getFarm().getFuelConversionFactorType().getFuelConversionFactor()*1)/1000;
     }
 
     public double totalEmissions(){

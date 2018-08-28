@@ -5,7 +5,7 @@ public enum ConversionFactorPlastic {
 //    CONVERSION ASSUMPTION - AVERAGE FOR ALL PLASTICS
 
     HDPE ("HDPE", 3188),
-    PET1 ("PET1", 3119),
+    PET1 ("PET1", 1123),
     VEGWARE ("VEGWARE", 4.55);
 
     private String plasticType;

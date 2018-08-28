@@ -67,6 +67,13 @@ public class Basket {
         this.productsInBasket.remove(product);
     }
 
+
+
+
+// ************    OUR BASKET EMISSIONS ***********************************
+
+
+//    EMISSIONS OF PRODUCT IN BASKET
     public double emissionsOfProductsInBasket() {
         double totalEmissions = 0;
         for (Product product : productsInBasket) {
@@ -75,29 +82,47 @@ public class Basket {
         return totalEmissions;
     }
 
-    public double foodMilesEmissionsOfProductsInBasket() {
-        double totalMilesEmissions = 0;
-        for (Product product : productsInBasket) {
-            totalMilesEmissions += product.emissionsOfFoodMilesTravelled();
+
+//   EMISSIONS OF PRODUCT FROM TRAVEL ONLY
+
+    public double foodMilesEmissionsOurShop() {
+        double totalEmissions = 0;
+        for (Product product: productsInBasket) {
+            totalEmissions += product.emissionsOfFoodMilesTravelled();
         }
-        return totalMilesEmissions;
+        return  totalEmissions * calculateTotalMileageForBasket();
     }
 
-    public double totalEmissionsCombined() {
+
+//  EMISSIONS OF PRODUCT IN BASKET COMBINED (TRAVEL + EMISSIONS)
+    public double totalEmissionsOfShopBasket() {
         double totalCombinedEmissions = 0;
         for (Product product : productsInBasket) {
             totalCombinedEmissions += product.totalEmissions();
         }
-        return totalCombinedEmissions;
+        return totalCombinedEmissions * calculateTotalMileageForBasket();
     }
 
-    public double emissionsSavedFromConventional() {
-        double totalEmissionsSaved = 0;
+
+//****************CONVENTIONAL SHOP FUNCTIONS ******************************
+// EMISSIONS OF TRAVEL OF THE CONVENTIONAL BASKET
+
+    public double foodMilesEmissionsOfProductsInBasket() {
+        double totalMilesEmissions = 0;
         for (Product product : productsInBasket) {
-            totalEmissionsSaved += product.differenceOfEmissions();
+            totalMilesEmissions += product.emissionsOfConventionalProduct();
         }
-        return totalEmissionsSaved;
+        return totalMilesEmissions ;
     }
+
+
+//  RETURNS TOTAL EMISSIONS AS IF THE BASKET WAS FROM CONVENTIONAL SHOP
+    public double totalEmissionsOfEverythingConventionalShop(){
+        return emissionsOfPlasticPackaging()+ foodMilesEmissionsOfProductsInBasket() + emissionsOfProductsInBasket();
+    }
+
+
+//    TOTAL EMISSIONS FROM PACKAGING
 
     public double emissionsOfPlasticPackaging() {
         double totalEmissionsSavedFromPlastic = 0;
@@ -109,6 +134,31 @@ public class Basket {
 
 
 
+//    ***************TO REUSE ****************************
+    public double emissionsSavedFromConventional() {
+        double totalEmissionsSaved = 0;
+        for (Product product : productsInBasket) {
+            totalEmissionsSaved += product.differenceOfEmissions();
+        }
+        return totalEmissionsSaved;
+    }
+
+
+
+//CALCULATE TOTAL DISTANCE OF THE PRODUCT TRAVEL
+    public Double calculateTotalMileageForBasket() {
+        Double totalMileageBasket = 0.00;
+        for (Product productOrdered : productsInBasket) {
+            int distance = Distance.distanceBetween(customer, productOrdered);
+            totalMileageBasket += distance;
+        }
+        return totalMileageBasket;
+    }
+
+
+
+
+//OTHER BASKET FUNCTIONS
     public void addAllProductsOrderedToBasket(ArrayList<Product> productsOrdered) {
         for (Product productOrdered : productsOrdered) {
             productOrdered.setBasket(this);
@@ -154,14 +204,11 @@ public class Basket {
     }
 
 
-    public Double calculateTotalMileageForBasket() {
-        Double totalMileageBasket = 0.00;
-        for (Product productOrdered : productsInBasket) {
-            int distance = Distance.distanceBetween(customer, productOrdered);
-            totalMileageBasket += distance;
-        }
-        return totalMileageBasket;
-    }
+
+
+
+
+
 }
 
 
