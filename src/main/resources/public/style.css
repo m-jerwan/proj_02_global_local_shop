@@ -130,7 +130,7 @@ main_shop_body{
 }
 
 .shop_image{
-    height: 25%;
-    background-image: url("/img/Ricardo.jpg");
-    background-size: contain;
+    height: 40%;
+    background-image: url(/img/Ricardo.jpg);
+    background-size: cover;
 }
