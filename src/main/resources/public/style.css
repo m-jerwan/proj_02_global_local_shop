@@ -34,21 +34,28 @@ th {
   border-bottom: 1px solid papayawhip;
   word-wrap:break-word;
 }
-/*  ====================================LANDING: */
+
+
 .main_container {
+    margin: auto;
     width: 100vw;
     height: 100vh;
     flex-direction: column;
     display: flex;
 }
 
+.block_center{
+margin: auto;
+display: block;
+}
+/*  ====================================LANDING: */
+
+
 .customersSignIn,
 .farmersSignIn {
   flex: 1;
   display: flex;
   align-items: center;
-
-
 }
 
 .signInOn{
@@ -68,14 +75,6 @@ th {
     background-size: cover;
 }
 
-.block_center{
-margin: auto;
-display: block;
-}
-
-
-
-
 .btn_landing{
   border: 0px none;
   border-radius: 8px;
@@ -93,4 +92,45 @@ display: block;
 .btn_landing a:active {
     color: white;
 
+}
+/*  ====================================SHOP: */
+
+main_shop_body{
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+}
+
+.top_bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.top_bar p {
+    display: inline;
+    margin-left: 1em;
+    margin-right: 2em;
+}
+.shopImage,
+.mainShop {
+    flex:2
+}
+ .top_bar {
+    flex: 1;
+}
+
+.main_shop {
+    margin-left: 5em;
+}
+
+.shop_image{
+    height: 25%;
+    background-image: url("/img/Ricardo.jpg");
+    background-size: contain;
 }
