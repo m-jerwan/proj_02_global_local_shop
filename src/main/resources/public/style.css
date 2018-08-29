@@ -113,6 +113,10 @@ display: block;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    max-height: 2.5rem;
+    font-size: 1.5rem;
+     color: #fff;
+     background-color: #399B40;
 
 }
 .top_bar p {
@@ -140,12 +144,6 @@ display: block;
     background-size: cover;
 }
 
-.top_bar {
-    max-height: 2rem;
-    font-size: 1.5rem;
-     color: #fff;
-     background-color: #399B40;
-}
 
 .main_shop{
     margin: 1rem auto 1rem;
@@ -169,5 +167,6 @@ display: block;
 }
 
 input[type=checkbox] {
-    box-sizing: border-box;
+    width: 30px;
+    height:30px;
 }

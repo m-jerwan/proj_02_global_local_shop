@@ -1,0 +1,48 @@
+.main_confirmation_body {
+border: 1px solid red;
+}
+
+ .purchase_confirmation {
+border: 1px solid red;
+
+
+ }
+
+.center{
+justify-content: center;
+}
+
+.usedFarms{
+border: 1px solid red;
+
+}
+
+.used_tags{
+border: 1px solid red;
+
+}
+
+.main_environment_info{
+border: 1px solid red;
+
+
+}
+
+.environmental_info{
+border: 1px solid red;
+
+}
+
+
+
+.environmental_travel{
+border: 1px solid red;
+
+}
+
+
+
+#confirmation_sent_white_text{
+    margin:0;
+    padding:0.2rem;
+}

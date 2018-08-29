@@ -1,89 +1,100 @@
-
-<div>
 #if ($basketTotal != 0)
-<div class="purchase_confirmation">
 
-    <h3>Order is done:</h3>
+<div class="main_confirmation_body">
 
-    #foreach ($entry in $customer.giveMeLastBasket().getProductsInBasket())
-    <p>$entry.getProductName()</p>
-    #end
+    <div class="purchase_confirmation">
 
-    <p>Basket total: £$basketTotal</p>
+        <div class="top_bar center">
+        <p id="confirmation_sent_white_text">Your order has been sent to the farms.</p>
+        </div>
+        <p>Products that you will receive: </p>
+        #foreach ($entry in $customer.giveMeLastBasket().getProductsInBasket())
+        <p>$entry.getProductName()</p>
+        #end
+        <p>Total: £$basketTotal</p>
+    </div>
 
+
+
+
+    <div class="usedFarms">
+        <h3>Farms:</h3>
+
+        #foreach ($entry in $farmsFromOrder)
+        <p>$entry.getFarmName()</p>
+        #end
+    </div>
+
+    <div class="used_tags">
+        <h3>Products you've bought are:</h3>
+        #foreach($entry in $tagsFromOrder)
+        <p>$entry.getDescription()</p>
+        #end
+    </div>
+
+
+    <div class="main_environment_info">
+
+
+        <div class="environmental_info">
+
+            <h3> The emissions of products in your basket </h3>
+
+
+                <p>This is the emission of the product only (no travel) </p>
+                <p> $customer.giveMeLastBasket().emissionsOfProductsInBasket() kgCO2e </p>
+
+
+        </div>
+
+        <div class="environmental_travel">
+            <h3> Your product travel summary:</h3>
+
+
+            <h2>This is the distance</h2>
+            <p> Your product will travel $totalMileageBasket mi </p>
+
+
+            <h2>This is the emissions of product travel from our farm</h2>
+            <p> This created $customer.giveMeLastBasket().foodMilesEmissionsOurShop() kgCO2e. </p>
+
+
+            <h2>This is the emissions of product travel from the conventional supermarket</h2>
+            <p> Because you shop locally, you saved $customer.giveMeLastBasket().foodMilesEmissionsOfProductsInBasket()
+                tonnes CO2e</p>
+
+
+            <h2>This is emissions saved through packaging</h2>
+            <p> And you saved so much $customer.giveMeLastBasket().emissionsOfPlasticPackaging() kgCO2e by not using
+                standard supermarket packaging. </p>
+
+        </div>
+
+
+        <h3> Your summary </h3>
+
+        <p> Your overall emissions: this is emissions of the basket including travelling </p>
+        <p> $customer.giveMeLastBasket().totalEmissionsOfShopBasket()</p>
+
+
+        <p> Your overall supermarket chain emissions: this is emissions overall of the supermarket</p>
+        <p> $customer.giveMeLastBasket().totalEmissionsOfEverythingConventionalShop() </p>
+
+
+        <p> Your overall saving: this is the difference between the two </p>
+
+
+    </div>
 </div>
-<div class="used_tags">
 
-    <h3>Products you've bought are:</h3>
-    #foreach($entry in $tagsFromOrder)
-    <p>$entry.getDescription()</p>
-    #end
-
-</div>
-
-
-<div class="usedFarms">
-    <h3>Farms:</h3>
-
-    #foreach ($entry in $farmsFromOrder)
-    <p>$entry.getFarmName()</p>
-    #end
-
-
-</div>
-
-<h3> The emissions of products in your basket </h3>
-
-<div class="environmental_impact_purchase">
-    <p>This is the emission of the product only (no travel) </p>
-    <p> $customer.giveMeLastBasket().emissionsOfProductsInBasket() kgCO2e </p>
-</div>
-
-
-    <h3> Your product travel summary:</h3>
-    <div class="environmental_impact_travel">
-
-
-    <h2>This is the distance</h2>
-    <p> Your product will travel $totalMileageBasket mi  </p>
-
-
-
-    <h2>This is the emissions of product travel from our farm</h2>
-    <p> This created $customer.giveMeLastBasket().foodMilesEmissionsOurShop() kgCO2e. </p>
-
-
-    <h2>This is the emissions of product travel from the conventional supermarket</h2>
-    <p> Because you shop locally, you saved $customer.giveMeLastBasket().foodMilesEmissionsOfProductsInBasket() tonnes CO2e</p>
-
-
-    <h2>This is emissions saved through packaging</h2>
-    <p> And you saved so much $customer.giveMeLastBasket().emissionsOfPlasticPackaging() kgCO2e by not using standard supermarket packaging. </p>
-
-</div>
-
-
-<h3> Your summary </h3>
-
-<p> Your overall emissions: this is emissions of the basket including travelling </p>
-<p> $customer.giveMeLastBasket().totalEmissionsOfShopBasket()</p>
-
-
-<p> Your overall supermarket chain emissions: this is emissions overall of the supermarket</p>
-<p> $customer.giveMeLastBasket().totalEmissionsOfEverythingConventionalShop() </p>
-
-
-<p> Your overall saving: this is the difference between the two </p>
 
 #else
 
 <p>Order is empty.</p>
 
 <form action="/shop" method="post">
-    <input class="inputbox" type="text"  name="customerId" hidden value="$customer.getId()" id="customerId">
+    <input class="inputbox" type="text" name="customerId" hidden value="$customer.getId()" id="customerId">
     <input type="submit" value="Back to shop" class="btn">
 </form>
-
-</div>
 
 #end
