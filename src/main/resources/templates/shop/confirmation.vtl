@@ -1,3 +1,4 @@
+
 #if ($basketTotal != 0)
 
 <div class="main_confirmation_body little_to_right">
@@ -50,20 +51,41 @@
     <div class="main_environment_info">
 
 
-        <div class="environmental_info">
+        <div class="environmental info ">
+            <div class="little_to_right">
+            <h3> The emissions of products you've bought: </h3>
+            <p> Buying with our farms: </p>
 
-            <h3> The emissions of products in your basket </h3>
+            <div class="w3-container">
+                <div class="w3-light-grey">
+                    <div class="w3-container w3-green" style="width:45%">kgCO2e:$customer.giveMeLastBasket().emissionsOfProductsInBasket() </div>
+                </div>
+            </div>
 
+            <p> Buying from high street supermarket: </p>
 
-                <p>This is the emission of the product only (no travel) </p>
-                <p> $customer.giveMeLastBasket().emissionsOfProductsInBasket() kgCO2e </p>
-
+            <div class="w3-container">
+                <div class="w3-light-grey">
+                    <div class="w3-container w3-red" style="width:70%">kgCO2e:$customer.giveMeLastBasket().emissionsOfProductsInBasket() </div>
+                </div>
+            </div>
+        </div>
 
         </div>
 
-        <div class="environmental_travel">
+        <div class="environmental travel">
             <h3> Your product travel summary:</h3>
+            <h2>This is the distance</h2>
+            <p> Your product will travel $totalMileageBasket mi </p>
 
+
+            <h2>This is the emissions of product travel from our farm</h2>
+            <p> This created $customer.giveMeLastBasket().foodMilesEmissionsOurShop() kgCO2e. </p>
+
+
+            <h2>This is the emissions of product travel from the conventional supermarket</h2>
+            <p> Because you shop locally, you saved $customer.giveMeLastBasket().foodMilesEmissionsOfProductsInBasket()
+                tonnes CO2e</p>
 
             <h2>This is the distance</h2>
             <p> Your product will travel $totalMileageBasket mi </p>
@@ -77,28 +99,13 @@
             <p> Because you shop locally, you saved $customer.giveMeLastBasket().foodMilesEmissionsOfProductsInBasket()
                 tonnes CO2e</p>
 
-
-            <h2>This is emissions saved through packaging</h2>
-            <p> And you saved so much $customer.giveMeLastBasket().emissionsOfPlasticPackaging() kgCO2e by not using
-                standard supermarket packaging. </p>
-
         </div>
-
-
-        <h3> Your summary </h3>
-
-        <p> Your overall emissions: this is emissions of the basket including travelling </p>
-        <p> $customer.giveMeLastBasket().totalEmissionsOfShopBasket()</p>
-
-
-        <p> Your overall supermarket chain emissions: this is emissions overall of the supermarket</p>
-        <p> $customer.giveMeLastBasket().totalEmissionsOfEverythingConventionalShop() </p>
-
-
-        <p> Your overall saving: this is the difference between the two </p>
-
-
     </div>
+
+
+
+
+
 </div>
 
 

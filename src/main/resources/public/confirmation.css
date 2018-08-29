@@ -48,22 +48,6 @@ justify-content: center;
 }
 
 
-
-.main_environment_info{
-}
-
-.environmental_info{
-
-}
-
-
-
-.environmental_travel{
-
-}
-
-
-
 #confirmation_sent_white_text{
     margin:0;
     padding:0.2rem;
@@ -85,4 +69,19 @@ display:flex;
     margin: 0 0.5rem 0;
     padding: 0.5rem;
     border-radius: 5px;
+}
+
+.main_environment_info {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.environmental {
+  flex: 1;
+ background-color: rgba( 74, 150, 151, 0.5);
+ margin: 5px;
+ padding: 5px;
+ border-radius: 5px;
+ display: inline-block;
 }
