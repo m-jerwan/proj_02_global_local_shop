@@ -1,4 +1,4 @@
-<div class=" main_shop_body">
+<div class="main_shop_body">
     <div class="top_bar">
         <div class="customerHello">
         <p>Welcome $customer.getCustomerName()</p>
@@ -14,7 +14,7 @@
 <div class="main_shop">
 
     <form action="/confirmation" method="post">
-        <table>
+        <table class="bigger_font">
             <tr>
                 <th> Name</th>
                 <th> Weight</th>
@@ -39,7 +39,8 @@
             #end
         </table>
         <input class="inputbox" type="text" name="customerId" hidden value="$customer.getId()" id="farmer_name">
-        <input type="submit" value="Order" class="btn">
+
+        <input type="submit" value="Order" class="btn" id="buy_button">
     </form>
 
 </div>

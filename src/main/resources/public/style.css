@@ -33,12 +33,12 @@ td, th {
 }
 
 td {
-  padding: 10px 20px 0px 0px;
+  padding: 0.3rem 2rem 0.5rem 2rem;
 }
 
 th {
-  padding: 0px 20px 10px 0px;
-  border-bottom: 1px solid papayawhip;
+  padding: 0.3rem 2rem 0.5rem 2rem;
+  border-bottom: 0.3rem solid papayawhip;
   word-wrap:break-word;
 }
 
@@ -102,14 +102,10 @@ display: block;
 }
 /*  ====================================SHOP: */
 
-main_shop_body{
-    margin: auto;
-    width: 100vw;
-    height: 100vh;
-    flex-direction: column;
+.main_shop_body {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    flex-direction: column;
+    height: 100%;
 
 }
 
@@ -121,30 +117,57 @@ main_shop_body{
 }
 .top_bar p {
     display: inline;
-    margin-left: 1em;
-    margin-right: 2em;
+    margin-left: 1rem;
+    margin-right: 2rem;
 }
 .shopImage,
 .mainShop {
-    flex:2
+    flex: 2;
 }
  .top_bar {
     flex: 1;
 }
 
-.main_shop {
-    margin-left: 5em;
+
+.bigger_font{
+    font-size: 1.5rem;
 }
 
+
 .shop_image{
-    height: 40%;
+    min-height: 40%;
     background-image: url(/img/Ricardo.jpg);
     background-size: cover;
 }
 
 .top_bar {
+    max-height: 2rem;
     font-size: 1.5rem;
      color: #fff;
      background-color: #399B40;
+}
 
+.main_shop{
+    margin: 1rem auto 1rem;
+    display: flex;
+   justify-content: center;
+}
+
+.btn {
+    display: flex;
+}
+
+#buy_button {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #399B40;
+    color: white;
+    font-size: 1rem;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type=checkbox] {
+    box-sizing: border-box;
 }
