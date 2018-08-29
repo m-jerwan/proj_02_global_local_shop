@@ -33,4 +33,11 @@
 <section class="historical_baskets_here">
     <p>all baskets here[excluding latest one?]</p>
 
+
 </section>
+#foreach ($array in $allProductsYouhaveBought)
+    <h5>Basket:</h5>
+    #foreach($product in $array)
+        <p>$product.getProductName()</p>
+    #end
+#end

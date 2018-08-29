@@ -11,6 +11,7 @@ import models.Shop;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -74,7 +75,13 @@ public class CustomersController {
             Customer customer = DBHelper.find(Integer.parseInt(req.params(":id")), Customer.class);
             Map<String, Object> model = new HashMap<>();
             List<Basket> basketList = DBCustomer.allBaskets(customer);
+
+            HashMap<Integer, List<Product>> productsInBaskets = customer.giveMeBasketsWithProducts();
+            ArrayList<List> allProductsYouhaveBought = new ArrayList<List>(productsInBaskets.values());
             List<List> historyOfPurchases = new ArrayList<>();
+
+
+            model.put("allProductsYouhaveBought", allProductsYouhaveBought);
             model.put("historyOfPurchases", historyOfPurchases);
             model.put("basketList", basketList);
             model.put("customer", customer);

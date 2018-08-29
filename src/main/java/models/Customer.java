@@ -1,7 +1,12 @@
 package models;
 
+import db.DBBasket;
+import db.DBCustomer;
+import org.hibernate.dialect.ProgressDialect;
+
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -99,6 +104,37 @@ public class Customer {
         }
         return footprintOfCustomer;
     }
+
+    public Basket giveMeLastBasket(){
+        int numberAllBaskets = this.getBaskets().size();
+        return this.getBaskets().get(numberAllBaskets-1);
+    }
+
+
+
+    public HashMap< Integer, List<Product>> giveMeBasketsWithProducts (){
+        HashMap <Integer, List<Product>> tempHash  = new HashMap<>();
+        List<Basket> customersBaskets = DBCustomer.allBaskets(this);
+        for (Basket basket : customersBaskets) {
+            List<Product> tempArray = new ArrayList<>();
+            List<Product> productsFromBasket = DBBasket.findAllProductsOfThis(basket);
+            for (Product product : productsFromBasket){
+                tempArray.add(product);
+            }
+            tempHash.put(basket.getId(), tempArray);
+        }
+        return tempHash;
+    }
+
+//    TODO FIX SHOW.VTL - RIGHT NOW SHOWS ONLY ONE PRODUCT
+
+
+
+
+
+
+
+
 //
 //    public double emissionsOfProductsInBasket(){
 //        double totalEmissions =0;
@@ -108,10 +144,6 @@ public class Customer {
 //        return totalEmissions;
 //    }
 //
-    public Basket giveMeLastBasket(){
-        int numberAllBaskets = this.getBaskets().size();
-        return this.getBaskets().get(numberAllBaskets-1);
-    }
 
 
 //
