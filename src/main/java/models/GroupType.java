@@ -14,7 +14,7 @@ public enum GroupType {
     PROCESSED("Processed foods", 5.1, 45),
     ROOT("Root crops", 1, 45),
     SEAFOOD("Seafood", 1, 45),
-    TUBERS("Tubers", 4.567, 14068),
+    TUBERS("Tubers", 4.57, 14068),
     VEGETEABLES("Vegetables", 3.45, 14068);
 
     private String description;
