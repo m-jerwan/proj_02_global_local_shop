@@ -132,7 +132,7 @@ public class Product {
     }
 
     public double emissionsOfProductKG(Product product){
-        return (product.getGroupType().getFoodConversionFactor() * 1 * product.getWeight());
+        return (product.getGroupType().getFoodConversionFactor() * 1 * product.getWeight())/1000;
     }
 
     public double emissionsOfFoodMilesTravelledNotUsed(int distance){
@@ -144,11 +144,11 @@ public class Product {
     }
 
     public double totalEmissions(){
-        return emissionsOfProduct() + emissionsOfFoodMilesTravelled();
+        return emissionsOfProduct() + emissionsOfFoodMilesTravelled()/1000;
     }
 
     public double emissionsOfConventionalProduct(){
-        return (getGroupType().getTravelDistance() * FuelConversionFactorType.PETROL.getFuelConversionFactor() )/100;
+        return (getGroupType().getTravelDistance() * FuelConversionFactorType.PETROL.getFuelConversionFactor())/1000;
     }
 
 //    TODO : Emissions from aviation
@@ -159,7 +159,7 @@ public class Product {
 
 
     public double productEmissionsPlastic(){
-        return (ConversionFactorPlastic.PET1.getConversionFactor() * 1 * this.getWeight())/100;
+        return (ConversionFactorPlastic.PET1.getConversionFactor() * 1 * this.getWeight())/1000;
     }
 
 

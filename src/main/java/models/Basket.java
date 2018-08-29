@@ -121,7 +121,9 @@ public class Basket {
         return emissionsOfPlasticPackaging()+ foodMilesEmissionsOfProductsInBasket() + emissionsOfProductsInBasket();
     }
 
-
+    public double totalEmissionsOfProductsConventionalShop(){
+        return emissionsOfPlasticPackaging()+ emissionsOfProductsInBasket();
+    }
 //    TOTAL EMISSIONS FROM PACKAGING
 
     public double emissionsOfPlasticPackaging() {
