@@ -1,3 +1,6 @@
+
+
+#if ($basketTotal != 0)
 <div class="purchase_confirmation">
 
     <h3>Order is done:</h3>
@@ -71,3 +74,14 @@
 
 
 <p> Your overall saving: this is the difference between the two </p>
+
+#else
+
+<p>Order is empty.</p>
+
+<form action="/shop" method="post">
+    <input class="inputbox" type="text"  name="customerId" hidden value="$customer.getId()" id="customerId">
+    <input type="submit" value="Back to shop" class="btn">
+</form>
+
+#end

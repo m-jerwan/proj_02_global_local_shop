@@ -65,25 +65,27 @@ public class ShopController {
 //exec:
             ArrayList<Product> productsOrdered = ProductFactory.makeProductsFromParams( req.queryParams());
 
-            currentBasket.addAllProductsOrderedToBasket(productsOrdered);
+                currentBasket.addAllProductsOrderedToBasket(productsOrdered);
 
-            tempBasketList.add(currentBasket);
-            customer_1.setBaskets(tempBasketList);
-            basketTotal = currentBasket.calculate£TotalForBasket();
-            currentBasket.putUniqueTagsFromBasketInto(tagsFromOrder);
-            ArrayList<Farm> uniqueFarms = currentBasket.giveMeUniqueFarmsFromBasket();
-            totalMileageBasket = currentBasket.calculateTotalMileageForBasket();
+                tempBasketList.add(currentBasket);
+                customer_1.setBaskets(tempBasketList);
+                basketTotal = currentBasket.calculate£TotalForBasket();
+                currentBasket.putUniqueTagsFromBasketInto(tagsFromOrder);
+                ArrayList<Farm> uniqueFarms = currentBasket.giveMeUniqueFarmsFromBasket();
+                totalMileageBasket = currentBasket.calculateTotalMileageForBasket();
 
 
-            DBHelper.save(currentBasket);
-            model.put("totalMileageBasket", totalMileageBasket);
-            model.put("basketTotal", basketTotal);
-            model.put("tagsFromOrder", tagsFromOrder);
-            model.put("farmsFromOrder", uniqueFarms);
-            model.put("customer", customer_1);
+                DBHelper.save(currentBasket);
+                model.put("totalMileageBasket", totalMileageBasket);
+                model.put("basketTotal", basketTotal);
+                model.put("tagsFromOrder", tagsFromOrder);
+                model.put("farmsFromOrder", uniqueFarms);
+                model.put("customer", customer_1);
 
-            model.put("template", "templates/shop/confirmation.vtl");
+                model.put("template", "templates/shop/confirmation.vtl");
+
             return new ModelAndView(model, "templates/layout.vtl");
+
         }, new VelocityTemplateEngine());
 
     }
