@@ -1,9 +1,12 @@
+
+
+/*  ====================================GLOBAL: */
 body {
   font-family: 'Noto Sans', sans-serif;
-  margin: 10px;
-  padding: 1px;
+  margin: 0px;
+  padding: 0px;
 }
-
+/*  ====================================tables: */
 
 table {
   border-collapse: collapse;
@@ -31,6 +34,47 @@ th {
   border-bottom: 1px solid papayawhip;
   word-wrap:break-word;
 }
+/*  ====================================LANDING: */
+.main_container {
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
+}
+
+.customersSignIn,
+.farmersSignIn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+
+}
+
+.signInOn{
+  font-size: 2rem;
+  color: #fff;
+  margin: auto;
+}
+
+.customersSignIn{
+    background-image: url("/img/ja-ma-216495-unsplash.jpg");
+    background-size: cover;
+}
+
+
+.farmersSignIn{
+    background-image: url("/img/farmSignInOnlinh-nguyen-166-unsplash.jpg");
+    background-size: cover;
+}
+
+.block_center{
+margin: auto;
+display: block;
+}
+
+
+
 
 .btn_landing{
   border: 0px none;

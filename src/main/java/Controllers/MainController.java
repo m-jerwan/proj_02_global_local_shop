@@ -20,7 +20,7 @@ public class MainController {
 
         staticFileLocation("/public");
 
-        Seeds.seedData();
+//        Seeds.seedData();
 
 
         FarmController farmController = new FarmController();
@@ -36,7 +36,10 @@ public class MainController {
 
             List<Customer> customers = DBHelper.getAll(Customer.class);
             model.put("customers", customers);
-            return new ModelAndView(model, "templates/index.vtl");
+            model.put("template", "templates/index.vtl");
+
+            return new ModelAndView(model, "templates/layout.vtl");
+
         }, new VelocityTemplateEngine());
 
     }
