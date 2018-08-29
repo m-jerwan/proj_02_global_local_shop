@@ -170,3 +170,14 @@ input[type=checkbox] {
     width: 30px;
     height:30px;
 }
+
+
+#font_over1,
+#font_over2,
+#font_over3,
+#font_over4,
+#customer_sign_in,
+#farmer_login {
+    font-size: 1rem;
+
+}
