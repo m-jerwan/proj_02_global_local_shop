@@ -3,9 +3,16 @@
 /*  ====================================GLOBAL: */
 body {
   font-family: 'Noto Sans', sans-serif;
-  margin: 0px;
-  padding: 0px;
+  margin: 0rem;
+  padding: 0rem;
 }
+/*  ====================================NAV: */
+
+nav{
+    margin-left: 2rem;
+}
+
+
 /*  ====================================tables: */
 
 table {
@@ -109,7 +116,7 @@ main_shop_body{
 .top_bar{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
 
 }
 .top_bar p {
@@ -133,4 +140,11 @@ main_shop_body{
     height: 40%;
     background-image: url(/img/Ricardo.jpg);
     background-size: cover;
+}
+
+.top_bar {
+    font-size: 1.5rem;
+     color: #fff;
+     background-color: #399B40;
+
 }
