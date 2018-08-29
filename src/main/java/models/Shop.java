@@ -75,9 +75,9 @@ public class Shop {
     public static ArrayList<Product> updateArrayToHaveOnlyUniqueProducts(List<Product> notUniqueArrayOfProducts){
         HashMap tempHashHelper = new HashMap();
 
-        for (Product product : notUniqueArrayOfProducts
-                ) {
-            tempHashHelper.put(product.getProductName(), product );
+        for (Product product : notUniqueArrayOfProducts)
+        { if (product.getBasket() == null) {
+            tempHashHelper.put(product.getProductName(), product ); }
         }
         return new ArrayList<>(tempHashHelper.values());
     }
