@@ -1,15 +1,18 @@
-<div class="welcome">
-    <p>Welcome $customer.getCustomerName()</p>
+<div class=" main_shop_body">
+    <div class="top_bar">
+        <p> SHOP LOGO & NAME</p>
+        <div class="customerHello">
+        <p>Welcome $customer.getCustomerName()</p>
+        <p>BASKET ICON 0</p>
+        </div>
+    </div>
+
+<div class="shop_image">
+   .
 </div>
 
 
-<div class="shopImage">
-    <p>Ricardo in all his farmer glory</p>
-    <p>Welcome to our shop</p>
-</div>
-
-
-<div class="mainshop">
+<div class="main_shop">
 
     <form action="/confirmation" method="post">
         <table>
@@ -17,7 +20,7 @@
                 <th> Name</th>
                 <th> Weight</th>
                 <th> GroupType</th>
-                <th> Category (Tag)</th>
+                <th> Tag</th>
                 <th> Price</th>
                 <th> Buy</th>
             </tr>
@@ -36,8 +39,9 @@
             </tr>
             #end
         </table>
-        <input class="inputbox" type="text"  name="customerId" hidden value="$customer.getId()" id="farmer_name">
+        <input class="inputbox" type="text" name="customerId" hidden value="$customer.getId()" id="farmer_name">
         <input type="submit" value="Order" class="btn">
+    </form>
 
-
+</div>
 </div>
