@@ -109,3 +109,9 @@ display:flex;
     flex-wrap:wrap;
 
 }
+
+.new_product_page {
+     display: block;
+     flex-direction: row;
+     flex-wrap:wrap;
+}
