@@ -99,3 +99,13 @@ display:flex;
 .summary h5 {
     text-align: center;
 }
+
+
+/*FARM=======================*/
+
+.new_farm_page {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+
+}
