@@ -2,10 +2,10 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-}
+    background-image: url("/img/bcgrd.jpg");
+    background-size: cover;
 
-.purchase_confirmation {
- }
+}
 
 .center{
 justify-content: center;
