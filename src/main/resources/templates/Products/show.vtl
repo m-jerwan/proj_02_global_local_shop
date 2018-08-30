@@ -1,3 +1,5 @@
+<div class="little_to_right">
+
 <p> Selected product </p>
 
 <table>
@@ -20,7 +22,7 @@
         <td>£ $product.getPrice()</td>
 
     </tr>
-</table>
+</table> <br>
 
 
 <p> Environmental Footprint of your product </p>
@@ -34,11 +36,7 @@
         <th>Foodmiles emissions </th>
         <td>$product.emissionsOfFoodMilesTravelled() tonnes CO2e </td>
     </tr>
-    <tr>
-        <th>Total emissions</th>
-        <td>$product.totalEmissions() tonnes CO2e</td>
-    </tr>
-</table>
+</table> <br>
 
 <a href="/products/$product.getId()/edit" class="button center">Edit</a>
 
@@ -48,3 +46,5 @@
 
 
 <a href="/products" class="button center">Back to list</a>
+
+</div>
