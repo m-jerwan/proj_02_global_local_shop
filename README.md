@@ -14,8 +14,9 @@ CUSTOMERS WILL BE ABLE TO:</br>
 * 	VIEW/BUY PRODUCE</br>
 * 	SEE SUMMARY PAGE OF SELECTION(PURCHASE)</br>
 
-
-
-ADD DISTANCE DATA(CALCULATIONS) FARMER TO CUSTOMER</br>
-BE ABLE TO CALCULATE ENVIRONMENTAL INFO OF PURCHASE</br>
+Summary page is the strength of the app as it shows detailed but not overwhelming details of the purchase:
+Farms which were supported,
+Environmental impact of the purchases.
 ***
+
+Environmental calculations are using products eco-impact, weight and quantity, type of fuel used and distance food is being delivered from farms to the customer. All data is based on industry and government figures.
